@@ -1,0 +1,25 @@
+.navigation-bar {
+  display: flex;
+  justify-content: space-between;
+}
+.nav-item,
+.nav-item.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.75em;
+  background: #ffffff;
+  border-radius: .5em;
+  border: 1px solid #7600DD;
+  cursor: pointer;
+}
+.nav-item.active {
+  background: #7600DD;
+}
+.nav-item .nav-icon {
+  height: 2.25em;
+  fill: #BB348A;
+}
+.nav-item.active .nav-icon {
+  fill: #ffffff;
+}
