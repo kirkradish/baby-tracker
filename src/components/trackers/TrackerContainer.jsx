@@ -7,33 +7,35 @@ import {
 } from '../../assets/data/notes'
 import PropTypes from 'prop-types';
 
-function determingNotes(subject) {
-  let showNotes;
-  switch(subject) {
-    case 'Notes':
-      showNotes = notes;
+function determingNotes(path) {
+  let notesInfo = {};
+
+  switch(path) {
+    case 'bottle-feeding':
+      notesInfo.showNotes = bottleFeedingNotes;
+      notesInfo.header = "Bottle Feeding";
       break;
-    case 'Bottle Feeding':
-      showNotes = bottleFeedingNotes;
+    case 'solid-foods':
+      notesInfo.showNotes = solidFoodsNotes;
+      notesInfo.header = 'Solid Foods';
       break;
-    case 'Solid Foods':
-      showNotes = solidFoodsNotes;
-      break;
-    case 'Sleep':
-      showNotes = sleepNotes;
+    case 'sleep':
+      notesInfo.showNotes = sleepNotes;
+      notesInfo.header = 'Sleep';
       break;
     default:
-      showNotes = notes;
+      notesInfo.showNotes = notes;
+      notesInfo.header = 'Notes';
   }
-  return showNotes;
+  return notesInfo;
 }
 
-export default function TrackerContainer({ subject }) {
+export default function TrackerContainer({ path }) {
   return (
-    <Headline title={subject} notes={determingNotes(subject)} />
+    <Headline title={determingNotes(path).header} notes={determingNotes(path).showNotes} />
   );
 }
 
 TrackerContainer.propTypes = {
-  subject: PropTypes.string.isRequired
+  path: PropTypes.string.isRequired
 }

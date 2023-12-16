@@ -1,20 +1,13 @@
-import { useState } from 'react';
+import { Outlet } from 'react-router-dom';
 import NavigationBar from './components/navigation/NavigationBar';
-import TrackerContainer from './components/trackers/TrackerContainer';
 import './App.css'
 
 function App() {
-  const [activeNav, setActiveNav] = useState('Notes');
-
-  function handleActive(item) {
-    setActiveNav(item)
-  }
-
   return (
     <div id="container">
       <div id="baby-tracker">
-        <NavigationBar activeItem={activeNav} selectedNav={handleActive} />
-        <TrackerContainer subject={activeNav} />
+        <NavigationBar />
+        <Outlet />
       </div>
     </div>
   )

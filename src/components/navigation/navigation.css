@@ -2,8 +2,7 @@
   display: flex;
   justify-content: space-between;
 }
-.nav-item,
-.nav-item.active {
+.navigation-bar .nav-item {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,13 +12,13 @@
   border: 1px solid #7600DD;
   cursor: pointer;
 }
-.nav-item.active {
+.navigation-bar .active .nav-item {
   background: #7600DD;
 }
-.nav-item .nav-icon {
+.navigation-bar .nav-item .nav-icon {
   height: 2.25em;
   fill: #BB348A;
 }
-.nav-item.active .nav-icon {
+.navigation-bar .active .nav-item .nav-icon {
   fill: #ffffff;
 }
