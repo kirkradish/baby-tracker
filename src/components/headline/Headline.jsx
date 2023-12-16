@@ -11,7 +11,7 @@ export default function Headline({ title, notes }) {
       </header>
       <article>
         {notes.map(note => (
-          <p key={note.title}>
+          <p key={note.header}>
             <span className="bold-text">{note.header}: </span>
             {note.body}
           </p>
