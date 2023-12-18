@@ -1,8 +1,10 @@
 #container {
+  display: flex;
+  flex-direction: column;
   margin: auto;
   width: 428px;
   height: 768px;
-  padding: 3em 0;
+  padding: 3em 0 0 0;
   border-radius: 2em;
   box-shadow: 0 0 1em rgba(0, 0, 0, .2);
   background: #F8F6F9;
