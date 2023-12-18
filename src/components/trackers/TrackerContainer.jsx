@@ -1,4 +1,3 @@
-import Headline from '../headline/Headline';
 import {
   notes,
   bottleFeedingNotes,
@@ -6,6 +5,8 @@ import {
   sleepNotes
 } from '../../assets/data/notes'
 import PropTypes from 'prop-types';
+import CloseIcon from '../../assets/icons/CloseIcon';
+import './TrackerContainer.css';
 
 function determingNotes(path) {
   let notesInfo = {};
@@ -32,7 +33,20 @@ function determingNotes(path) {
 
 export default function TrackerContainer({ path }) {
   return (
-    <Headline title={determingNotes(path).header} notes={determingNotes(path).showNotes} />
+    <section className="tracker-container">
+      <header>
+        <h2>{determingNotes(path).header}</h2>
+        <span className="add-button"><CloseIcon /></span>
+      </header>
+      <section>
+        {notes.map(note => (
+          <p key={note.header}>
+            <span className="bold-text">{note.header}: </span>
+            {note.body}
+          </p>
+        ))}
+      </section>
+    </section>
   );
 }
 
