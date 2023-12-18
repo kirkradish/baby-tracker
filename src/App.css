@@ -6,10 +6,9 @@
   border-radius: 2em;
   box-shadow: 0 0 1em rgba(0, 0, 0, .2);
   background: #F8F6F9;
+  background-image: linear-gradient(to right, #FFDCF9 , #FFE6FB);
 }
 
-#baby-tracker {
-  height: 100%;
-  padding: 1em;
-  background-color: white;
+.add-head {
+  padding: 0 1em;
 }

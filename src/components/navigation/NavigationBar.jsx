@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { Routes, Route } from 'react-router-dom'
-import TrackerComponent from '../trackers/TrackerContainer'
+import TrackerComponent from '../Trackers/TrackerContainer'
 import NavItem from './NavItem'
 import NotesIcon from '../../assets/icons/NotesIcon'
 import BottleIcon from '../../assets/icons/BottleIcon';

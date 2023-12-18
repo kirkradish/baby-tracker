@@ -1,14 +1,15 @@
 import { Outlet } from 'react-router-dom';
-import NavigationBar from './components/navigation/NavigationBar';
+import NavigationBar from './components/Navigation/NavigationBar';
 import './App.css'
 
 function App() {
   return (
     <div id="container">
-      <div id="baby-tracker">
-        <NavigationBar />
-        <Outlet />
-      </div>
+      <header className="add-head">
+        <h1>Baby Tracker</h1>
+      </header>
+      <NavigationBar />
+      <Outlet />
     </div>
   )
 }

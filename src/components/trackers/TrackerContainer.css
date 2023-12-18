@@ -1,0 +1,33 @@
+.tracker-container {
+  height: 100%;
+  margin: 2em 0;
+  padding: 1.5em;
+  border-radius: 2em;
+  background-color: #ffffff;
+}
+
+.tracker-container header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+.tracker-container h2 {
+  font-size: 1.75em;
+  color: #5C41DD;
+  margin: 0;
+}
+
+.tracker-container header .add-button {
+  display: flex;
+  align-items: center;
+  padding: .25em;
+  background-color: #5C41DD;
+  border-radius: 2em;
+}
+.tracker-container .add-button svg {
+  width: 2em;
+  transform: rotate(45deg);
+  fill: #F8F6F9;
+}
