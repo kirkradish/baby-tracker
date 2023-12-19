@@ -1,51 +1,50 @@
-import {
-  notes,
-  bottleFeedingNotes,
-  solidFoodsNotes,
-  sleepNotes
-} from '../../assets/data/notes'
+import { notes } from '../../assets/data/notes';
+import { bottleFeedings } from '../../assets/data/bottleFeedings';
+import { solidFoods } from '../../assets/data/solidFoods';
+import { sleepSchedule } from '../../assets/data/sleepSchedule';
 import PropTypes from 'prop-types';
 import CloseIcon from '../../assets/icons/CloseIcon';
+import ListItem from '../ListItem/ListItem';
 import './TrackerContainer.css';
 
-function determingNotes(path) {
-  let notesInfo = {};
-
+function determingPage(path) {
+  let pageContent = {};
   switch(path) {
     case 'bottle-feeding':
-      notesInfo.showNotes = bottleFeedingNotes;
-      notesInfo.header = "Bottle Feeding";
+      pageContent.header = "Bottle Feeding";
+      pageContent.items = bottleFeedings;
       break;
     case 'solid-foods':
-      notesInfo.showNotes = solidFoodsNotes;
-      notesInfo.header = 'Solid Foods';
+      pageContent.header = 'Solid Foods';
+      pageContent.items = solidFoods;
       break;
     case 'sleep':
-      notesInfo.showNotes = sleepNotes;
-      notesInfo.header = 'Sleep';
+      pageContent.header = 'Sleep';
+      pageContent.items = sleepSchedule;
       break;
     default:
-      notesInfo.showNotes = notes;
-      notesInfo.header = 'Notes';
+      pageContent.header = 'Notes';
+      pageContent.items = notes;
   }
-  return notesInfo;
+  return pageContent;
 }
 
 export default function TrackerContainer({ path }) {
   return (
     <section className="tracker-container">
       <header>
-        <h2>{determingNotes(path).header}</h2>
+        <h2>{determingPage(path).header}</h2>
         <span className="add-button"><CloseIcon /></span>
       </header>
-      <section>
-        {notes.map(note => (
-          <p key={note.header}>
-            <span className="bold-text">{note.header}: </span>
-            {note.body}
-          </p>
+      <article>
+        {determingPage(path).items.map(item => (
+          <ListItem
+            key={item.header}
+            header={item.header}
+            aside={item.date}
+          />
         ))}
-      </section>
+      </article>
     </section>
   );
 }
