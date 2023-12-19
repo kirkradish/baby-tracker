@@ -1,0 +1,19 @@
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em 0;
+  border-bottom: 1px solid #5C41DD;
+}
+
+.list-item .item-header {
+  font-size: 1.125em;
+  font-weight: 600;
+  color: #363636;
+  margin-bottom: 0;
+}
+
+.list-item .item-aside {
+  font-size: 1em;
+  font-weight: 400;
+  color: #363636;
+}
