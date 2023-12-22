@@ -1,6 +1,5 @@
-import PropTypes from 'prop-types';
 import { Routes, Route } from 'react-router-dom'
-import TrackerComponent from '../Trackers/TrackerContainer'
+import TrackerContainer from '../trackers/TrackerContainer';
 import NavItem from './NavItem'
 import NotesIcon from '../../assets/icons/NotesIcon'
 import BottleIcon from '../../assets/icons/BottleIcon';
@@ -14,32 +13,28 @@ export default function NavigationBar() {
       <nav className="navigation-bar">
         <NavItem
           Icon={NotesIcon}
-          name="notes"
+          endPath="notes"
         />
         <NavItem
           Icon={BottleIcon}
-          name="bottle-feeding"
+          endPath="bottle-feeding"
         />
         <NavItem
           Icon={SolidFoodIcon}
-          name="solid-foods"
+          endPath="solid-foods"
         />
         <NavItem
           Icon={CribIcon}
-          name="sleep"
+          endPath="sleep"
         />
       </nav>
       <Routes>
-        <Route path='/' element={<TrackerComponent path="notes" />} />
-        <Route path='notes' element={<TrackerComponent path="notes" />} />
-        <Route path='bottle-feeding' element={<TrackerComponent path="bottle-feeding" />} />
-        <Route path='solid-foods' element={<TrackerComponent path="solid-foods" />} />
-        <Route path='sleep' element={<TrackerComponent path="sleep" />} />
+        <Route path='/' element={<TrackerContainer page="Notes" />} />
+        <Route path='notes/*' element={<TrackerContainer page="Notes" />} />
+        <Route path='bottle-feeding' element={<TrackerContainer page="Bottle Feeding" />} />
+        <Route path='solid-foods' element={<TrackerContainer page="Solid Foods" />} />
+        <Route path='sleep' element={<TrackerContainer page="Sleep" />} />
       </Routes>
     </>
   );
-}
-
-NavigationBar.propTypes = {
-  
 }

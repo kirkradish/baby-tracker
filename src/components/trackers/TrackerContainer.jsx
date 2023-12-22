@@ -1,54 +1,76 @@
+import { useState } from 'react';
 import { notes } from '../../assets/data/notes';
 import { bottleFeedings } from '../../assets/data/bottleFeedings';
 import { solidFoods } from '../../assets/data/solidFoods';
 import { sleepSchedule } from '../../assets/data/sleepSchedule';
 import PropTypes from 'prop-types';
-import CloseIcon from '../../assets/icons/CloseIcon';
+import PageHeader from '../PageHeader/PageHeader'
 import ListItem from '../ListItem/ListItem';
+import TrackerEditor from './TrackerEditor';
 import './TrackerContainer.css';
 
-function determingPage(path) {
-  let pageContent = {};
-  switch(path) {
-    case 'bottle-feeding':
-      pageContent.header = "Bottle Feeding";
-      pageContent.items = bottleFeedings;
-      break;
-    case 'solid-foods':
-      pageContent.header = 'Solid Foods';
-      pageContent.items = solidFoods;
-      break;
-    case 'sleep':
-      pageContent.header = 'Sleep';
-      pageContent.items = sleepSchedule;
-      break;
-    default:
-      pageContent.header = 'Notes';
-      pageContent.items = notes;
-  }
-  return pageContent;
-}
+export default function TrackerContainer({ page }) {
+  const [isEditing, setIsEditin] = useState(false);
+  const [allNotes, setAllNotes] = useState(notes);
+  const [allBottleFeedings, setAllBottleFeedings] = useState(bottleFeedings);
+  const [allSolidFoods, setAllSolidFoods] = useState(solidFoods);
+  const [allSleep, setAllSleep] = useState(sleepSchedule);
 
-export default function TrackerContainer({ path }) {
+  function displayItems(page) {
+    let list = {};
+    switch(page) {
+      case 'Bottle Feeding':
+        list.items = allBottleFeedings;
+        list.fn = setAllBottleFeedings
+        break;
+      case 'Solid Foods':
+        list.items = allSolidFoods;
+        list.fn = setAllSolidFoods;
+        break;
+      case 'Sleep':
+        list.items = allSleep;
+        list.fn = setAllSleep;
+        break;
+      default:
+        list.items = allNotes;
+        list.fn = setAllNotes
+    }
+    return list;
+  }
+
+  function determineEditing() {
+    setIsEditin(prevEditingState => !prevEditingState);
+  }
+
+  function getBack(stateFunction, newNote) {
+    stateFunction(prevNotes => [newNote, ...prevNotes]);
+    setIsEditin(false);
+  }
+
   return (
     <section className="tracker-container">
-      <header>
-        <h2>{determingPage(path).header}</h2>
-        <span className="add-button"><CloseIcon /></span>
-      </header>
+      <PageHeader
+        header={page}
+        editState={isEditing}
+        toggleHander={determineEditing}
+      />
       <article>
-        {determingPage(path).items.map(item => (
-          <ListItem
-            key={item.header}
-            header={item.header}
-            aside={item.date}
-          />
-        ))}
+        {!isEditing ? (
+          displayItems(page).items.map(item => (
+            <ListItem
+              key={item.header}
+              header={item.header}
+              aside={item.date}
+            />
+          ))
+        ) : (
+          <TrackerEditor lifter={getBack} stateFn={displayItems(page).fn} />
+        )}
       </article>
     </section>
   );
 }
 
 TrackerContainer.propTypes = {
-  path: PropTypes.string.isRequired
+  page: PropTypes.string.isRequired
 }

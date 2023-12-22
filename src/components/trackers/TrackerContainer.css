@@ -19,15 +19,62 @@
   margin: 0;
 }
 
-.tracker-container header .add-button {
+.tracker-container header .add-close-button {
   display: flex;
   align-items: center;
   padding: .25em;
   background-color: #5C41DD;
   border-radius: 2em;
+  cursor: pointer;
 }
-.tracker-container .add-button svg {
+.tracker-container header .add-close-button:hover {
+  background-color: #3D22BE;
+}
+.tracker-container .add-close-button svg {
   width: 2em;
-  transform: rotate(45deg);
   fill: #F8F6F9;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 1em
+}
+
+.input-group label {
+  position: absolute;
+  top: .5em;
+  left: 1em;
+  color: rgba(92, 65, 221, .5);
+}
+
+.input-group input {
+  height: 3em;
+  width: 100%;
+  padding: 0 1em;
+  border-radius: .5em;
+  border: 1px solid #5C41DD;
+  outline: 0;
+}
+.input-group:focus-within label,
+.input-group:has(input:not(:placeholder-shown)) label {
+  top: -.8em;
+  font-size: .8em;
+  color: rgba(92, 65, 221, 1);
+  padding: 0 3px;
+  background: #ffffff;
+}
+
+.submit-form {
+  color: #F8F6F9;
+  font-size: 1.025em;
+  font-weight: 500;
+  background-color: #5C41DD;
+  width: 100%;
+  padding: .75em 0;
+  border-radius: 3em;
+  outline: 0;
+  border: 0;
+}
+.submit-form:hover {
+  background-color: #3D22BE;
 }
