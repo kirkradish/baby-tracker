@@ -54,7 +54,7 @@ export default function TrackerContainer({ page }) {
         editState={isEditing}
         toggleHander={determineEditing}
       />
-      <article>
+      <article className="tracker-pad">
         {!isEditing ? (
           displayItems(page).items.map(item => (
             <ListItem
@@ -64,7 +64,11 @@ export default function TrackerContainer({ page }) {
             />
           ))
         ) : (
-          <TrackerEditor lifter={getBack} stateFn={displayItems(page).fn} />
+          <TrackerEditor
+            lifter={getBack}
+            stateFn={displayItems(page).fn}
+            toggleHander={determineEditing}
+          />
         )}
       </article>
     </section>

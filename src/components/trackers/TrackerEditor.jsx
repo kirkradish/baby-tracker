@@ -1,12 +1,12 @@
 import { useRef } from 'react'
 import PropTypes from 'prop-types';
 
-export default function TrackerEditor({ lifter, stateFn }) {
+export default function TrackerEditor({ lifter, stateFn, toggleHander }) {
   const inputHeader = useRef();
   const inputDate = useRef();
   const inputBody = useRef();
 
-  function doIt(e) {
+  function handleSubmit(e) {
     e.preventDefault();
     lifter(stateFn, {
       header: inputHeader.current.value,
@@ -15,7 +15,7 @@ export default function TrackerEditor({ lifter, stateFn }) {
     });
   }
   return (
-    <form onSubmit={(e) => doIt(e)}>
+    <form onSubmit={(e) => handleSubmit(e)}>
       <div className="input-group input-group__header">
         <label>Header</label>
         <input ref={inputHeader} type="text" placeholder=" " />
@@ -26,15 +26,24 @@ export default function TrackerEditor({ lifter, stateFn }) {
       </div>
       <div className="input-group input-group__body">
         <label>Body</label>
-        {/* change this to textarea */}
-        <input ref={inputBody} type="text" placeholder=" " />
+        <textarea ref={inputBody} placeholder=" "></textarea>
       </div>
-      <input className="submit-form" type="submit" />
+      <div className="action-buttons">
+        <button
+          className="form__cancel"
+          type="button"
+          onClick={toggleHander}
+        >
+          Cancel
+        </button>
+        <input className="submit-form" type="submit" />
+      </div>
     </form>
   );
 }
 
 TrackerEditor.propTypes = {
   lifter: PropTypes.func.isRequired,
-  stateFn: PropTypes.func.isRequired
+  stateFn: PropTypes.func.isRequired,
+  toggleHander: PropTypes.func.isRequired
 }

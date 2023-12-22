@@ -1,14 +1,14 @@
 .navigation-bar {
   display: flex;
   justify-content: space-between;
-  padding: 0 1em;
+  padding: 0 1.5em;
 }
 .navigation-bar .nav-item {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 5.5em;
-  height: 5.5em;
+  width: 5em;
+  height: 5em;
   border-radius: 5em;
   border: 1px solid #5C41DD;
   cursor: pointer;

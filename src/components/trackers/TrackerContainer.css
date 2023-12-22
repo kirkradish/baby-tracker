@@ -4,6 +4,11 @@
   padding: 1.5em;
   border-radius: 2em;
   background-color: #ffffff;
+  box-shadow: 0 -5px 8px -8px #98B;
+}
+
+.tracker-pad {
+  height: calc(100% - 4em);
 }
 
 .tracker-container header {
@@ -35,6 +40,12 @@
   fill: #F8F6F9;
 }
 
+.tracker-container form {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .input-group {
   position: relative;
   margin-bottom: 1em
@@ -48,31 +59,63 @@
 }
 
 .input-group input {
+  position: relative;
   height: 3em;
   width: 100%;
   padding: 0 1em;
   border-radius: .5em;
   border: 1px solid #5C41DD;
   outline: 0;
+  background: transparent;
+  z-index: 1;
 }
 .input-group:focus-within label,
-.input-group:has(input:not(:placeholder-shown)) label {
+.input-group:has(input:not(:placeholder-shown)) label,
+.input-group:has(textarea:not(:placeholder-shown)) label {
   top: -.8em;
   font-size: .8em;
   color: rgba(92, 65, 221, 1);
   padding: 0 3px;
   background: #ffffff;
+  z-index: 10;
+}
+.input-group__body {
+  flex-grow: 1;
+}
+.input-group textarea {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  padding: 1em;
+  width: 100%;
+  height: 100%;
+  border-radius: .5em;
+  border: 1px solid #5C41DD;
+  outline: 0;
 }
 
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+.action-buttons * {
+  padding: .75em 0;
+  border-radius: 3em;
+  width: calc(50% - .5em);
+}
+button.form__cancel {
+  color: #5C41DD;
+}
+button.form__cancel:focus {
+  outline: 0;
+}
+button.form__cancel:hover {
+  color: #3D22BE;
+  border-color: #3D22BE;
+}
 .submit-form {
   color: #F8F6F9;
   font-size: 1.025em;
-  font-weight: 500;
+  font-weight: 600;
   background-color: #5C41DD;
-  width: 100%;
-  padding: .75em 0;
-  border-radius: 3em;
-  outline: 0;
   border: 0;
 }
 .submit-form:hover {

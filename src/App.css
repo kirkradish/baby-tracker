@@ -4,7 +4,7 @@
   margin: auto;
   width: 428px;
   height: 768px;
-  padding: 3em 0 0 0;
+  padding: 2em 0 0 0;
   border-radius: 2em;
   box-shadow: 0 0 1em rgba(0, 0, 0, .2);
   background: #F8F6F9;
@@ -12,5 +12,5 @@
 }
 
 .add-head {
-  padding: 0 1em;
+  padding: 0 1.5em;
 }
