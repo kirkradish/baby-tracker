@@ -1,11 +1,11 @@
 import { NavLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-export default function NavItem({ Icon, name }) {
+export default function NavItem({ Icon, endPath }) {
 
   return (
     <>
-      <NavLink to={name}>
+      <NavLink to={endPath}>
         <div className='nav-item'>
           <Icon className="nav-icon" />
         </div>
@@ -16,5 +16,5 @@ export default function NavItem({ Icon, name }) {
 
 NavItem.propTypes = {
   Icon: PropTypes.elementType.isRequired,
-  name: PropTypes.string.isRequired
+  endPath: PropTypes.string.isRequired
 }
