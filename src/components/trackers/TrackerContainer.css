@@ -1,33 +1,40 @@
 .tracker-container {
+  display: flex;
+  flex-direction: column;
   height: 100%;
   margin: 2em 0 0 0;
-  padding: 1.5em;
-  border-radius: 2em;
-  background-color: #ffffff;
-  box-shadow: 0 -5px 8px -8px #98B;
+  border-radius: 1em;
+  background: linear-gradient(to right,  rgba(247,246,240,.7), rgba(247,247,245,.7));
+  box-shadow: 0 -6px 8px 0px rgba(0,0,0, .07);
 }
 
-.tracker-pad {
-  height: calc(100% - 4em);
-}
-
-.tracker-container header {
+.tracker-container > header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1em;
+  padding: 1.5em;
 }
 
 .tracker-container h2 {
   font-size: 1.75em;
-  color: #5C41DD;
+  font-weight: 400;
+  color: #363636;
   margin: 0;
+}
+
+.tracker-pad {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 2;
+  padding: 1.5em;
+  background: linear-gradient(to bottom,  #ffffff, rgba(255,255,255,0));
+  border-radius: 0 0 1em 1em;
 }
 
 .tracker-container header .add-close-button {
   display: flex;
   align-items: center;
-  padding: .25em;
+  padding: .1em;
   background-color: #5C41DD;
   border-radius: 2em;
   cursor: pointer;

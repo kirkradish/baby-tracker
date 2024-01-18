@@ -8,9 +8,10 @@
   border-radius: 2em;
   box-shadow: 0 0 1em rgba(0, 0, 0, .2);
   background: #F8F6F9;
-  background-image: linear-gradient(to right, #FFDCF9 , #FFE6FB);
+  background-image: linear-gradient(to right, #FFEEFC , #FFFCFF);
 }
 
 .add-head {
+  text-align: center;
   padding: 0 1.5em;
 }

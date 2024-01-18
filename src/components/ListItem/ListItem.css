@@ -1,19 +1,22 @@
 .list-item {
   display: flex;
   justify-content: space-between;
-  padding: 1em 0;
-  border-bottom: 1px solid #5C41DD;
+  padding: 1em;
+  border-radius: .5em;
+  background-color: #ffffff;
+  box-shadow: 0 0px 8px 0px rgba(0,0,0, .08);
+  margin-bottom: 1em;
 }
 
 .list-item .item-header {
   font-size: 1.125em;
-  font-weight: 600;
-  color: #363636;
+  font-weight: 500;
+  color: #5A5A5A;
   margin-bottom: 0;
 }
 
 .list-item .item-aside {
-  font-size: 1em;
+  font-size: .9em;
   font-weight: 400;
-  color: #363636;
+  color: #5A5A5A;
 }
