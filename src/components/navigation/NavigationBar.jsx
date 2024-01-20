@@ -13,18 +13,22 @@ export default function NavigationBar() {
       <nav className="navigation-bar">
         <NavItem
           Icon={NotesIcon}
+          text="Notes"
           endPath="notes"
         />
         <NavItem
           Icon={BottleIcon}
+          text="Bottle Feeding"
           endPath="bottle-feeding"
         />
         <NavItem
           Icon={SolidFoodIcon}
+          text="Solid Foods"
           endPath="solid-foods"
         />
         <NavItem
           Icon={CribIcon}
+          text="Sleep"
           endPath="sleep"
         />
       </nav>

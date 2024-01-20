@@ -19,9 +19,13 @@ export default function TrackerContainer({ page }) {
   function displayItems(page) {
     let list = {};
     switch(page) {
+      case 'Notes':
+        list.items = allNotes;
+        list.fn = setAllNotes;
+        break;
       case 'Bottle Feeding':
         list.items = allBottleFeedings;
-        list.fn = setAllBottleFeedings
+        list.fn = setAllBottleFeedings;
         break;
       case 'Solid Foods':
         list.items = allSolidFoods;
