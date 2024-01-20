@@ -5,6 +5,7 @@ import { solidFoods } from '../../assets/data/solidFoods';
 import { sleepSchedule } from '../../assets/data/sleepSchedule';
 import PropTypes from 'prop-types';
 import PageHeader from '../PageHeader/PageHeader'
+import DateDropdown from '../Calendar/DateDropdown';
 import ListItem from '../ListItem/ListItem';
 import TrackerEditor from './TrackerEditor';
 import './TrackerContainer.css';
@@ -53,11 +54,12 @@ export default function TrackerContainer({ page }) {
 
   return (
     <section className="tracker-container">
-      <PageHeader
+      {/* <PageHeader
         header={page}
         editState={isEditing}
         toggleHander={determineEditing}
-      />
+      /> */}
+      <DateDropdown />
       <section className="tracker-pad">
         {!isEditing ? (
           displayItems(page).items.map(item => (

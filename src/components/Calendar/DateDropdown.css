@@ -1,0 +1,15 @@
+.date-dropdown .react-datepicker-wrapper,
+.date-dropdown .react-datepicker-wrapper input {
+  width: 100%;
+}
+.date-dropdown .react-datepicker-wrapper input {
+  font-size: 1em;
+  color: #363636;
+  padding: 1em;
+  border: 1px solid #5C41DD;
+  border-radius: .7em;
+}
+
+.date-dropdown p {
+  color: #363636;
+}
