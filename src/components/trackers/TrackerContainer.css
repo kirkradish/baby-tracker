@@ -4,8 +4,8 @@
   height: 100%;
   margin: 2em 0 0 0;
   border-radius: 1em;
-  background: linear-gradient(to right,  rgba(247,246,240,.7), rgba(247,247,245,.7));
-  box-shadow: 0 -6px 8px 0px rgba(0,0,0, .07);
+  background: linear-gradient(to bottom,  #ffffff, rgba(255,255,255,0));
+  box-shadow: 0 -5px 8px 0px rgba(0,0,0, .02);
 }
 
 .tracker-container > header {
@@ -13,10 +13,11 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.5em;
+  border-bottom: 1px solid #5C41DD;
 }
 
 .tracker-container h2 {
-  font-size: 1.75em;
+  font-size: 1.65em;
   font-weight: 400;
   color: #363636;
   margin: 0;
@@ -27,7 +28,6 @@
   flex-direction: column;
   flex-grow: 2;
   padding: 1.5em;
-  background: linear-gradient(to bottom,  #ffffff, rgba(255,255,255,0));
   border-radius: 0 0 1em 1em;
 }
 
