@@ -18,21 +18,24 @@
   border: 1px solid #5C41DD;
   cursor: pointer;
 }
+.nav-item-container .nav-item .nav-icon {
+  height: 2.25em;
+  fill: #5C41DD;
+}
 .nav-item-container p {
   padding-top: .5em;
   font-size: .85em;
   font-weight: 400;
 }
-.nav-item-container .active .nav-item {
+
+/* ACTIVE CLASSES */
+.nav-item-container.active .nav-item {
   background: #5C41DD;
 }
 .nav-item-container.active p {
   font-weight: 700;
 }
-.nav-item-container .nav-item .nav-icon {
-  height: 2.25em;
-  fill: #5C41DD;
-}
-.nav-item-container .active .nav-item .nav-icon {
+.nav-item-container.active .nav-item .nav-icon {
   fill: #ffffff;
 }
+/* END ACTIVE CLASSES */
