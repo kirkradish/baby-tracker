@@ -1,10 +1,7 @@
 import { useState } from 'react';
-import { notes } from '../../assets/data/notes';
-import { bottleFeedings } from '../../assets/data/bottleFeedings';
 import { solidFoods } from '../../assets/data/solidFoods';
 import { sleepSchedule } from '../../assets/data/sleepSchedule';
 import PropTypes from 'prop-types';
-import PageHeader from '../PageHeader/PageHeader'
 import DateDropdown from '../Calendar/DateDropdown';
 import ListItem from '../ListItem/ListItem';
 import TrackerEditor from './TrackerEditor';
@@ -54,11 +51,6 @@ export default function TrackerContainer({ page }) {
 
   return (
     <section className="tracker-container">
-      {/* <PageHeader
-        header={page}
-        editState={isEditing}
-        toggleHander={determineEditing}
-      /> */}
       <DateDropdown />
       <section className="tracker-pad">
         {!isEditing ? (

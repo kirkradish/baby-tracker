@@ -1,10 +1,14 @@
-import { Routes, Route } from 'react-router-dom'
-import TrackerContainer from '../trackers/TrackerContainer';
-import NavItem from './NavItem'
-import NotesIcon from '../../assets/icons/NotesIcon'
+import { Routes, Route } from 'react-router-dom';
+import NavItem from './NavItem';
+import NotesIcon from '../../assets/icons/NotesIcon';
 import BottleIcon from '../../assets/icons/BottleIcon';
-import SolidFoodIcon from '../../assets/icons/SolidFoodIcon'
-import CribIcon from '../../assets/icons/CribIcon'
+import SolidFoodIcon from '../../assets/icons/SolidFoodIcon';
+import CribIcon from '../../assets/icons/CribIcon';
+import HomePage from '../../Pages/HomePage';
+import NotesPage from '../../Pages/NotesPage';
+import BottleFeedingsPage from '../../Pages/BottleFeedingsPage';
+import SolidFoodsPage from '../../Pages/SolidFoodsPage';
+import SleepPage from '../../Pages/SleepPage';
 import './navigation.css'
 
 export default function NavigationBar() {
@@ -33,11 +37,11 @@ export default function NavigationBar() {
         />
       </nav>
       <Routes>
-        <Route path='/' element={<TrackerContainer page="Notes" />} />
-        <Route path='notes/*' element={<TrackerContainer page="Notes" />} />
-        <Route path='bottle-feeding' element={<TrackerContainer page="Bottle Feeding" />} />
-        <Route path='solid-foods' element={<TrackerContainer page="Solid Foods" />} />
-        <Route path='sleep' element={<TrackerContainer page="Sleep" />} />
+        <Route path='/' element={<HomePage />} />
+        <Route path='notes/*' element={<NotesPage />} />
+        <Route path='bottle-feeding' element={<BottleFeedingsPage />} />
+        <Route path='solid-foods' element={<SolidFoodsPage />} />
+        <Route path='sleep' element={<SleepPage />} />
       </Routes>
     </>
   );
