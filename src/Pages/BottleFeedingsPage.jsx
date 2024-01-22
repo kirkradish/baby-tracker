@@ -12,6 +12,9 @@ export default function BottleFeedingsPage() {
       {bottleFeedings.map(item => (
         <ListItem
           key={item.header}
+          id={item.id}
+          path="bottle-feeding-detail"
+          data={bottleFeedings}
           header={item.header}
           aside={item.date}
         />

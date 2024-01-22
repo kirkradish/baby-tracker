@@ -2,7 +2,6 @@ import { NavLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 export default function NavItem({ Icon, text, endPath }) {
-
   return (
     <NavLink className="nav-item-container" to={endPath}>
       <div className='nav-item'>

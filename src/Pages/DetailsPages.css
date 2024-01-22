@@ -1,0 +1,12 @@
+.detail-content {}
+
+.detail-content header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.detail-content header h2 {
+  font-size: 1em;
+  font-weight: 600;
+}

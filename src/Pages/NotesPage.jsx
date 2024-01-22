@@ -7,7 +7,9 @@ export default function NotesPage() {
     <section className="page tracker-container">
       {notes.map(item => (
         <ListItem
-          key={item.header}
+          key={item.id}
+          id={item.id}
+          path="note-detail"
           header={item.header}
           aside={item.date}
         />

@@ -3,6 +3,11 @@
   justify-content: space-between;
   padding: 1em;
 }
+
+.navigation-bar.text-nav {
+  justify-content: space-around;
+}
+
 .nav-item-container {
   display: flex;
   flex-direction: column;
