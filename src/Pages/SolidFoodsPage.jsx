@@ -11,7 +11,9 @@ export default function SolidFoodsPage() {
       </div>
       {solidFoods.map(item => (
         <ListItem
-          key={item.header}
+          key={item.id}
+          id={item.id}
+          path="solid-food-detail"
           header={item.header}
           aside={item.date}
         />

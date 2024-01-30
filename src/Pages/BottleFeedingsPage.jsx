@@ -14,7 +14,6 @@ export default function BottleFeedingsPage() {
           key={item.header}
           id={item.id}
           path="bottle-feeding-detail"
-          data={bottleFeedings}
           header={item.header}
           aside={item.date}
         />

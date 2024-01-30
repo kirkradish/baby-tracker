@@ -18,8 +18,8 @@ export default function NavigationBar() {
       />
       <NavItem
         Icon={BottleIcon}
-        text="Bottle Feeding"
-        endPath="bottle-feeding"
+        text="Bottle Feedings"
+        endPath="bottle-feedings"
       />
       <NavItem
         Icon={SolidFoodIcon}
@@ -29,7 +29,7 @@ export default function NavigationBar() {
       <NavItem
         Icon={CribIcon}
         text="Sleep"
-        endPath="sleep"
+        endPath="sleep-schedule"
       />
     </nav>
   );

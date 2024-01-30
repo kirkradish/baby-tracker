@@ -11,7 +11,9 @@ export default function SleepPage() {
       </div>
       {sleepSchedule.map(item => (
         <ListItem
-          key={item.header}
+          key={item.id}
+          id={item.id}
+          path="sleep-schedule-detail"
           header={item.header}
           aside={item.date}
         />

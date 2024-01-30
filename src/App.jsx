@@ -28,12 +28,18 @@ function App() {
             <Route index={true} element={<NotesPage />}></Route>
             <Route path='note-detail/:id' element={<DetailsPage />} />
           </Route>
-          <Route path='bottle-feeding'>
+          <Route path='bottle-feedings'>
             <Route index={true} element={<BottleFeedingsPage />}></Route>
             <Route path='bottle-feeding-detail/:id' element={<DetailsPage />} />
           </Route>
-          <Route path='solid-foods' element={<SolidFoodsPage />} />
-          <Route path='sleep' element={<SleepPage />} />
+          <Route path='solid-foods'>
+            <Route index={true} element={<SolidFoodsPage />}></Route>
+            <Route path='solid-food-detail/:id' element={<DetailsPage />} />
+          </Route>
+          <Route path='sleep-schedule'>
+            <Route index={true} element={<SleepPage />}></Route>
+            <Route path='sleep-schedule-detail/:id' element={<DetailsPage />} />
+          </Route>
         </Routes>
       </div>
     </NavProvider>

@@ -1,10 +1,13 @@
 import { useNavUpdate } from '../store/NavContext.jsx';
 import { useParams, useNavigate } from 'react-router-dom';
 import { notes } from '../assets/data/notes';
+import { bottleFeedings } from '../assets/data/bottleFeedings';
+import { solidFoods } from '../assets/data/solidFoods';
+import { sleepSchedule } from '../assets/data/sleepSchedule';
 import './DetailsPages.css';
 
 export default function DetailsPage() {
-  const navUpdater = useNavUpdate(false);
+  const navUpdater = useNavUpdate();
 
   const { id } = useParams();
   const navigate = useNavigate();
@@ -14,8 +17,22 @@ export default function DetailsPage() {
     navUpdater();
   }
 
-  // const parentPageData = window.location.href.split('/')[3];
-  // use Redux or some state management to dynamically load js data objects
+  const parentPageData = window.location.href.split('/')[3];
+  let displayObj;
+  
+  switch(parentPageData) {
+    case 'bottle-feedings' :
+      displayObj = bottleFeedings;
+      break;
+    case 'solid-foods' :
+      displayObj = solidFoods;
+      break;
+    case 'sleep-schedule' :
+      displayObj = sleepSchedule;
+      break;
+    default:
+      displayObj = notes;
+  }
 
   return (
     <section className="page tracker-container">
@@ -28,7 +45,7 @@ export default function DetailsPage() {
         </button>
       </div>
 
-      {notes.filter(item => item.id === id).map(notePiece => (
+      {displayObj.filter(item => item.id === id).map(notePiece => (
         <article key={notePiece.id} className="detail-content">
           <header>
             <h2>{notePiece.header}</h2>
