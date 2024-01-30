@@ -1,3 +1,4 @@
+import { useNav } from '../../store/NavContext.jsx';
 import NavItem from './NavItem';
 import NotesIcon from '../../assets/icons/NotesIcon';
 import BottleIcon from '../../assets/icons/BottleIcon';
@@ -6,8 +7,10 @@ import CribIcon from '../../assets/icons/CribIcon';
 import './navigation.css';
 
 export default function NavigationBar() {
+  const fullNav = useNav();
+  
   return (
-    <nav className="navigation-bar">
+    <nav className={fullNav ? 'icon-nav-bar' : 'minimal-nav-bar'}>
       <NavItem
         Icon={NotesIcon}
         text="Notes"

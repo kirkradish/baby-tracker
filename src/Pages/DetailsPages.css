@@ -1,5 +1,20 @@
 .detail-content {}
 
+.details-masthead {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2em;
+}
+.details-masthead span {
+  display: inline-block;
+}
+.details-masthead button {
+  color: #5C41DD;
+}
+.details-masthead button:hover {
+  color: #3D22BE;
+}
+
 .detail-content header {
   display: flex;
   align-items: center;
