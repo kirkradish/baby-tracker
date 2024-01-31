@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useDate, useDateUpdate } from '../../store/DateContext';
 import DatePicker from "react-datepicker";
 import PropTypes from 'prop-types';
 
@@ -8,16 +8,16 @@ import "react-datepicker/dist/react-datepicker.css";
 // import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 // https://www.npmjs.com/package/react-datepicker?activeTab=readme
 
-export default function Calendar({ dateLifter }) {
-  const [startDate, setStartDate] = useState(new Date());
+export default function Calendar() {
+  const dateUpdater = useDateUpdate(new Date());
+  const theDate = useDate();
 
   function handleChange(date) {
-    setStartDate(date);
-    dateLifter(date);
+    dateUpdater(date);
   }
 
   return (
-    <DatePicker selected={startDate} onChange={(date) => handleChange(date)} />
+    <DatePicker selected={theDate} onChange={(date) => handleChange(date)} />
   );
 }
 

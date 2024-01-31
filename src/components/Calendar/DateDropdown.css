@@ -11,5 +11,11 @@
 }
 
 .date-dropdown p {
-  color: #363636;
+  font-size: .9em;
+  color: #5A5A5A;
+}
+
+.clear-calendar-filter {
+  color: #5C41DD;
+  font-weight: 600;
 }
