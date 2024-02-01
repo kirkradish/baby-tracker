@@ -9,6 +9,7 @@ import DetailsPage from './Pages/DetailsPages';
 import BottleFeedingsPage from './Pages/BottleFeedingsPage';
 import SolidFoodsPage from './Pages/SolidFoodsPage';
 import SleepPage from './Pages/SleepPage';
+import EditDetails from './Pages/EditDetails.jsx';
 import './App.css';
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
             <Route path='/' element={<HomePage />} />
             <Route path='notes'>
               <Route index={true} element={<NotesPage />}></Route>
+              <Route path='new' element={<EditDetails />} />
               <Route path='note-detail/:id' element={<DetailsPage />} />
             </Route>
             <Route path='bottle-feedings'>

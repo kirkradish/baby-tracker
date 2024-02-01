@@ -1,3 +1,4 @@
+import { grabParentFromUrl } from '../assets/commonFns.js';
 import { useNavUpdate } from '../store/NavContext.jsx';
 import { useParams, useNavigate } from 'react-router-dom';
 import { notes } from '../assets/data/notes';
@@ -17,7 +18,7 @@ export default function DetailsPage() {
     navUpdater();
   }
 
-  const parentPageData = window.location.href.split('/')[3];
+  const parentPageData = grabParentFromUrl();
   let displayObj;
   
   switch(parentPageData) {
@@ -37,11 +38,8 @@ export default function DetailsPage() {
   return (
     <section className="page tracker-container">
       <div className="details-masthead">
-        <button onClick={handleBackClick}>
+        <button className="page-function" onClick={handleBackClick}>
           <span className="material-symbols-outlined">arrow_back_ios</span>
-        </button>
-        <button>
-          <span className="material-symbols-outlined">edit</span>
         </button>
       </div>
 

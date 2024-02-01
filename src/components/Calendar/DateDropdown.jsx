@@ -1,5 +1,6 @@
 import { useDate, useDateUpdate } from '../../store/DateContext';
 import Calendar from './Calendar';
+import { dateSlashFormatter } from '../../assets/commonFns';
 import './DateDropdown.css';
 
 export default function DateDropdown() {
@@ -7,8 +8,8 @@ export default function DateDropdown() {
   const dateUpdater = useDateUpdate();
   const contextDate = useDate();
 
-  const currentDateFormatted = `${currentDate.getMonth() + 1}/${currentDate.getDate()}/${currentDate.getFullYear()}`;
-  const contextDateFormatted = contextDate ? `${contextDate.getMonth() + 1}/${contextDate.getDate()}/${contextDate.getFullYear()}` : '';
+  const currentDateFormatted = dateSlashFormatter(currentDate);
+  const contextDateFormatted = dateSlashFormatter(contextDate);
 
   const formattedDateFilterDate = contextDate ? contextDateFormatted : currentDateFormatted;
 

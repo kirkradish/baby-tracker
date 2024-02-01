@@ -2,7 +2,7 @@ import { useDate } from '../store/DateContext';
 import { solidFoods } from '../assets/data/solidFoods';
 import DateDropdown from '../components/Calendar/DateDropdown';
 import ListItem from '../components/ListItem/ListItem';
-import './pages.css';
+import './Pages.css';
 
 export default function SolidFoodsPage() {
   const contextDate = useDate();

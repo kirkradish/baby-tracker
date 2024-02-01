@@ -2,7 +2,7 @@ import { useDate } from '../store/DateContext';
 import { bottleFeedings } from '../assets/data/bottleFeedings';
 import DateDropdown from '../components/Calendar/DateDropdown';
 import ListItem from '../components/ListItem/ListItem';
-import './pages.css';
+import './Pages.css';
 
 export default function BottleFeedingsPage() {
   const contextDate = useDate();

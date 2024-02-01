@@ -24,7 +24,7 @@
   border-radius: .5em;
   border: 1px solid #5C41DD;
   outline: 0;
-  background: transparent;
+  background: linear-gradient(to bottom,  #ffffff, rgba(255,255,255,0));
   z-index: 1;
 }
 .input-group:focus-within label,
@@ -47,6 +47,7 @@
   height: 100%;
   border-radius: .5em;
   border: 1px solid #5C41DD;
+  background: linear-gradient(to bottom,  #ffffff, rgba(255,255,255,0));
   outline: 0;
 }
 
@@ -60,14 +61,16 @@
   width: calc(50% - .5em);
 }
 button.form__cancel {
+  font-weight: 500;
   color: #5C41DD;
+  background: linear-gradient(to top,  #ffffff, rgba(255,255,255,0));
 }
 button.form__cancel:focus {
   outline: 0;
 }
 button.form__cancel:hover {
   color: #3D22BE;
-  border-color: #3D22BE;
+  border: 1px solid #3D22BE;
 }
 .submit-form {
   color: #F8F6F9;
