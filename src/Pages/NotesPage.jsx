@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useNavUpdate } from '../store/NavContext.jsx';
 import { NavLink } from 'react-router-dom'
 import { notes } from '../assets/data/notes';
@@ -7,15 +8,15 @@ import './Pages.css';
 export default function NotesPage() {
   const navUpdater = useNavUpdate();
 
-  function handleNavChange() {
-    navUpdater();
-  }
+  useEffect(() => {
+    navUpdater(true);
+  }, []);
 
   return(
     <section className="page tracker-container">
       <div className="details-masthead details-masthead--end">
         <NavLink to='new'>
-          <button className="entry-function" onClick={handleNavChange}>
+          <button className="entry-function">
             <span className="bold-text">Add note</span>
             <span className="material-symbols-outlined">add</span>
           </button>

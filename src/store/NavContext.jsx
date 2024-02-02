@@ -14,8 +14,8 @@ export function useNavUpdate() {
 export function NavProvider({ children }) {
   const [fullSizeNav, setFullSizeNav] = useState(true);
 
-  function toggleNavSize() {
-    setFullSizeNav(prevState => !prevState);
+  function toggleNavSize(bool) {
+    setFullSizeNav(bool);
   }
 
   return (

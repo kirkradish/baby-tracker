@@ -1,10 +1,9 @@
-import { useNav, useNavUpdate } from '../../store/NavContext.jsx';
+import { useNav } from '../../store/NavContext.jsx';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 export default function NavItem({ Icon, text, endPath }) {
   const fullNav = useNav();
-  const navUpdater = useNavUpdate();
 
   return (
     <NavLink className="nav-item-container" to={endPath}>
@@ -13,7 +12,7 @@ export default function NavItem({ Icon, text, endPath }) {
           <Icon className="nav-icon" />
         </div>
      )}
-      <p onClick={!fullNav ? navUpdater : () => {}}>
+      <p>
         {text}
       </p>
     </NavLink>

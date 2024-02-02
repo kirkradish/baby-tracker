@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useNavUpdate } from '../store/NavContext.jsx';
 import { useNavigate } from 'react-router-dom';
 import { useDate } from '../store/DateContext';
 import { useRef } from 'react';
@@ -7,10 +9,15 @@ import { randomFourDigitId, dateSlashFormatter } from '../assets/commonFns';
 import DateDropdown from '../components/Calendar/DateDropdown';
 
 export default function EditDetails() {
+  const navUpdater = useNavUpdate();
   const navigate = useNavigate();
   const headerRef = useRef();
   const inputDate = useDate();
   const bodyRef = useRef();
+
+  useEffect(() => {
+    navUpdater(false);
+  }, []);
   
   function handleSubmit(e) {
     e.preventDefault();

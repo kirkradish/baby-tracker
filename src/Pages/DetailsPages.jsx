@@ -1,5 +1,6 @@
-import { grabParentFromUrl } from '../assets/commonFns.js';
+import { useEffect } from 'react';
 import { useNavUpdate } from '../store/NavContext.jsx';
+import { grabParentFromUrl } from '../assets/commonFns.js';
 import { useParams, useNavigate } from 'react-router-dom';
 import { notes } from '../assets/data/notes';
 import { bottleFeedings } from '../assets/data/bottleFeedings';
@@ -10,12 +11,16 @@ import './DetailsPages.css';
 export default function DetailsPage() {
   const navUpdater = useNavUpdate();
 
+  useEffect(() => {
+    navUpdater(false);
+  }, []);
+
   const { id } = useParams();
   const navigate = useNavigate();
 
   function handleBackClick() {
     navigate(-1);
-    navUpdater();
+    navUpdater(true);
   }
 
   const parentPageData = grabParentFromUrl();
