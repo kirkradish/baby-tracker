@@ -12,7 +12,7 @@ export default function SolidFoodsPage() {
   return (
     <section className="page tracker-container">
       <div className="date-picker">
-        <DateDropdown />
+        <DateDropdown showClearFilter={true} />
       </div>
       {filteredList.length > 0 ? (
         filteredList.map(item => (

@@ -1,9 +1,10 @@
 import { useDate, useDateUpdate } from '../../store/DateContext';
+import PropTypes from 'prop-types';
 import Calendar from './Calendar';
 import { dateSlashFormatter } from '../../assets/commonFns';
 import './DateDropdown.css';
 
-export default function DateDropdown() {
+export default function DateDropdown({ showClearFilter }) {
   const currentDate = new Date();
   const dateUpdater = useDateUpdate();
   const contextDate = useDate();
@@ -25,9 +26,17 @@ export default function DateDropdown() {
     <div className="date-dropdown">
       <p className="date-dropdown-title">Select a date</p>
       <Calendar dateLifter={grabCalendarDate} />
-      {formattedDateFilterDate != currentDateFormatted && (
+      {formattedDateFilterDate != currentDateFormatted && showClearFilter && (
         <button className="clear-calendar-filter" onClick={handleFilter}>Back to today</button>
       )}
     </div>
   );
 }
+
+DateDropdown.propTypes = {
+  showClearFilter: PropTypes.bool.isRequired
+};
+
+DateDropdown.defaultProps = {
+  showClearFilter: false
+};
