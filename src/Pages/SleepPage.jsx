@@ -32,7 +32,7 @@ export default function SleepPage() {
           />
         ))
       ) : (
-        <p>No documented sleep for this date.</p>
+        <p>Enter the first sleep schedule of the day.</p>
       )}
     </section>
   );

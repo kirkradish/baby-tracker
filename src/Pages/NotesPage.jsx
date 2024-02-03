@@ -3,6 +3,7 @@ import { useNavUpdate } from '../store/NavContext.jsx';
 import { NavLink } from 'react-router-dom'
 import { notes } from '../assets/data/notes';
 import ListItem from '../components/ListItem/ListItem';
+import { dateSorter } from '../assets/commonFns.js';
 import './Pages.css';
 
 export default function NotesPage() {
@@ -10,7 +11,12 @@ export default function NotesPage() {
 
   useEffect(() => {
     navUpdater(true);
+    dateSorter(notes);
   }, []);
+
+  useEffect(() => {
+    dateSorter(notes);
+  }, [notes]);
 
   return(
     <section className="page tracker-container">
@@ -22,15 +28,17 @@ export default function NotesPage() {
           </button>
         </NavLink>
       </div>
-      {notes.map(item => (
-        <ListItem
-          key={item.id}
-          id={item.id}
-          path="note-detail"
-          header={item.header}
-          aside={item.date}
-        />
-      ))}
+      <div className="entries">
+        {notes.map(item => (
+          <ListItem
+            key={item.id}
+            id={item.id}
+            path="note-detail"
+            header={item.header}
+            aside={item.date}
+          />
+        ))}
+      </div>
     </section>
   );
 }

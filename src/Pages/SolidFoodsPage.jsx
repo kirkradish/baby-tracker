@@ -32,7 +32,7 @@ export default function SolidFoodsPage() {
           />
         ))
       ) : (
-        <p>No documented solid food feedings for this date.</p>
+        <p>Enter the first solid food feeding of the day.</p>
       )}
     </section>
   );

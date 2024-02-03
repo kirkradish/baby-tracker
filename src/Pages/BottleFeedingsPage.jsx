@@ -32,7 +32,7 @@ export default function BottleFeedingsPage() {
           />
         ))
       ) : (
-        <p>No documented bottle feedings for this date.</p>
+        <p>Enter the first bottle feeding of the day.</p>
       )}
     </section>
   );
