@@ -21,7 +21,7 @@ export default function NotesPage() {
   return(
     <section className="page tracker-container">
       <div className="details-masthead details-masthead--end">
-        <NavLink to='new'>
+        <NavLink to='editor'>
           <button className="entry-function">
             <span className="bold-text">Add note</span>
             <span className="material-symbols-outlined">add</span>

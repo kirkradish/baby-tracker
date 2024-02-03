@@ -29,7 +29,8 @@ function App() {
             <Route path='/' element={<HomePage />} />
             <Route path='notes'>
               <Route index={true} element={<NotesPage />}></Route>
-              <Route path='new' element={<EditDetails />} />
+              <Route path='editor/' element={<EditDetails />} />
+              <Route path='editor/:id' element={<EditDetails />} />
               <Route path='note-detail/:id' element={<DetailsPage />} />
             </Route>
             <Route path='bottle-feedings'>

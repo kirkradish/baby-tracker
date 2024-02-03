@@ -14,44 +14,73 @@ Form.propTypes = {
   onSubmit: PropTypes.func.isRequired
 };
 
-export const Input = forwardRef(function Input({ labelText, inputType, placeholderText, additionalClasses }, ref) {
+export function Input({
+  labelText,
+  inputType,
+  placeholderText,
+  additionalClasses,
+  value,
+  onChange
+}) {
   return (
     <div className={`input-group input-group__header ${additionalClasses}`}>
       <label>{labelText}</label>
-      <input ref={ref} type={inputType} placeholder={placeholderText} />
+      <input
+        type={inputType}
+        placeholder={placeholderText}
+        value={value}
+        onChange={onChange}
+      />
     </div>
-  )
-});
+  );
+}
 Input.propTypes = {
   labelText: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
   inputType: PropTypes.string,
   placeholderText: PropTypes.string,
-  additionalClasses: PropTypes.string
+  additionalClasses: PropTypes.string,
+  value: PropTypes.string
 };
 Input.defaultProps = {
   inputType: 'text',
   placeholderText: ' ',
-  additionalClasses: ''
+  additionalClasses: '',
+  value: ''
 };
 
-export const Textarea = forwardRef(function Textarea({ labelText, placeholderText, additionalClasses }, ref) {
+export const Textarea = ({
+  labelText,
+  placeholderText,
+  additionalClasses,
+  value,
+  onChange
+}) => {
   return (
     <div className={`input-group input-group__body ${additionalClasses}`}>
       <label>{labelText}</label>
-      <textarea placeholder={placeholderText} ref={ref}></textarea>
+      <textarea
+        placeholder={placeholderText}
+        value={value}
+        onChange={onChange}
+      >
+      </textarea>
     </div>
   );
-});
+}
 Textarea.propTypes = {
   labelText: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
   inputType: PropTypes.string,
   placeholderText: PropTypes.string,
-  additionalClasses: PropTypes.string
+  additionalClasses: PropTypes.string,
+  value: PropTypes.string
 };
 Textarea.defaultProps = {
   inputType: 'text',
   placeholderText: ' ',
-  additionalClasses: ''
+  additionalClasses: '',
+  value: ''
 };
 
 export function ActionButtons ({ primaryButtonText, secondaryButtonText, clickFn }) {

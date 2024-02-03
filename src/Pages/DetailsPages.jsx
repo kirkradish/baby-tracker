@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { NavLink } from 'react-router-dom'
 import { useNavUpdate } from '../store/NavContext.jsx';
 import { grabParentFromUrl } from '../assets/commonFns.js';
 import { useParams, useNavigate } from 'react-router-dom';
@@ -19,7 +20,7 @@ export default function DetailsPage() {
   const navigate = useNavigate();
 
   function handleBackClick() {
-    navigate(-1);
+    navigate(`/${grabParentFromUrl()}`);
     navUpdater(true);
   }
 
@@ -46,6 +47,9 @@ export default function DetailsPage() {
         <button className="page-function" onClick={handleBackClick}>
           <span className="material-symbols-outlined">arrow_back_ios</span>
         </button>
+        <NavLink to={`../editor/${id}`}>
+          <span className="material-symbols-outlined">edit</span>
+        </NavLink>
       </div>
 
       {displayObj.filter(item => item.id === id).map(notePiece => (
