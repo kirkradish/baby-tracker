@@ -1,16 +1,16 @@
 import { useEffect } from 'react';
 import { useNavUpdate } from '../store/NavContext.jsx';
-import { useDate } from '../store/DateContext';
-import { solidFoods } from '../assets/data/solidFoods';
-import DateDropdown from '../components/Calendar/DateDropdown';
-import ListItem from '../components/ListItem/ListItem';
+import { useDate } from '../store/DateContext.jsx';
+import { pureeFeedinds } from '../assets/data/pureeFeedings.js';
+import DateDropdown from '../components/Calendar/DateDropdown.jsx';
+import ListItem from '../components/ListItem/ListItem.jsx';
 import './Pages.css';
 
-export default function SolidFoodsPage() {
+export default function PureePage() {
   const navUpdater = useNavUpdate();
   const contextDate = useDate();
   const formattedDateFilterDate = `${contextDate.getMonth() + 1}/${contextDate.getDate()}/${contextDate.getFullYear()}`;
-  const filteredList = solidFoods.filter(item => (item.date === formattedDateFilterDate));
+  const filteredList = pureeFeedinds.filter(item => (item.date === formattedDateFilterDate));
 
   useEffect(() => {
     navUpdater(true);
@@ -26,13 +26,13 @@ export default function SolidFoodsPage() {
           <ListItem
             key={item.id}
             id={item.id}
-            path="solid-food-detail"
+            path="puree-detail"
             header={item.header}
             aside={item.date}
           />
         ))
       ) : (
-        <p>Enter the first solid food feeding of the day.</p>
+        <p>Enter the first feeding of pur&eacute;e for the day.</p>
       )}
     </section>
   );

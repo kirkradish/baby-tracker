@@ -1,4 +1,4 @@
-export const solidFoods = [
+export const pureeFeedinds = [
   {
     id: "6",
     header: "7:00am",

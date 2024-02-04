@@ -7,7 +7,7 @@ import HomePage from './Pages/HomePage';
 import NotesPage from './Pages/NotesPage';
 import DetailsPage from './Pages/DetailsPages';
 import BottleFeedingsPage from './Pages/BottleFeedingsPage';
-import SolidFoodsPage from './Pages/SolidFoodsPage';
+import PureePage from './Pages/PureePage';
 import SleepPage from './Pages/SleepPage';
 import EditDetails from './Pages/EditDetails.jsx';
 import './App.css';
@@ -37,9 +37,9 @@ function App() {
               <Route index={true} element={<BottleFeedingsPage />}></Route>
               <Route path='bottle-feeding-detail/:id' element={<DetailsPage />} />
             </Route>
-            <Route path='solid-foods'>
-              <Route index={true} element={<SolidFoodsPage />}></Route>
-              <Route path='solid-food-detail/:id' element={<DetailsPage />} />
+            <Route path='puree-foods'>
+              <Route index={true} element={<PureePage />}></Route>
+              <Route path='puree-detail/:id' element={<DetailsPage />} />
             </Route>
             <Route path='sleep-schedule'>
               <Route index={true} element={<SleepPage />}></Route>

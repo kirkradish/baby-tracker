@@ -5,7 +5,7 @@ import { grabParentFromUrl } from '../assets/commonFns.js';
 import { useParams, useNavigate } from 'react-router-dom';
 import { notes } from '../assets/data/notes';
 import { bottleFeedings } from '../assets/data/bottleFeedings';
-import { solidFoods } from '../assets/data/solidFoods';
+import { pureeFeedinds } from '../assets/data/pureeFeedings.js';
 import { sleepSchedule } from '../assets/data/sleepSchedule';
 import './DetailsPages.css';
 
@@ -31,8 +31,8 @@ export default function DetailsPage() {
     case 'bottle-feedings' :
       displayObj = bottleFeedings;
       break;
-    case 'solid-foods' :
-      displayObj = solidFoods;
+    case 'puree-foods' :
+      displayObj = pureeFeedinds;
       break;
     case 'sleep-schedule' :
       displayObj = sleepSchedule;

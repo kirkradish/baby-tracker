@@ -1,5 +1,4 @@
-import * as React from "react";
-const SvgSolidFoodIcon = (props) => (
+const SvgPureeIcon = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     data-name="Layer 1"
@@ -11,4 +10,4 @@ const SvgSolidFoodIcon = (props) => (
     />
   </svg>
 );
-export default SvgSolidFoodIcon;
+export default SvgPureeIcon;
