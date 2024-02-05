@@ -41,6 +41,13 @@ export default function DetailsPage() {
       displayObj = notes;
   }
 
+  const idObj = displayObj.filter(item => item.id === id)[0];
+
+  function handleDelete() {
+    const newNotes = notes.filter(note => note.id !== id);
+    navigate(`/${grabParentFromUrl()}`, {state: {newNotes}});
+  }
+
   return (
     <section className="page tracker-container">
       <div className="details-masthead">
@@ -52,15 +59,19 @@ export default function DetailsPage() {
         </NavLink>
       </div>
 
-      {displayObj.filter(item => item.id === id).map(notePiece => (
-        <article key={notePiece.id} className="detail-content">
-          <header>
-            <h2>{notePiece.header}</h2>
-            <aside>{notePiece.date}</aside>
-          </header>
-          <p>{notePiece.body}</p>
-        </article>  
-      ))}
+      <article key={idObj.id} className="detail-content">
+        <header>
+          <h2>{idObj.header}</h2>
+          <aside>{idObj.date}</aside>
+        </header>
+        <p>{idObj.body}</p>
+      </article>
+
+      <div className="details-footer">
+        <button onClick={handleDelete}>
+          <span className="material-symbols-outlined">delete</span>
+        </button>
+      </div>
     </section>
   );
 }

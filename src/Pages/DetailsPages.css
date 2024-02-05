@@ -1,4 +1,6 @@
-.detail-content {}
+.detail-content {
+  flex-grow: 1;
+}
 
 .details-masthead {
   display: flex;
@@ -25,9 +27,19 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 1em;
 }
 
 .detail-content header h2 {
   font-size: 1em;
   font-weight: 600;
+}
+
+.details-footer {
+  margin-top: 1em;
+  text-align: right;
+}
+.details-footer button {
+  color: #5C41DD;
+  cursor: pointer;
 }

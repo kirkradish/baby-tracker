@@ -16,7 +16,7 @@ function App() {
   return (
     <NavProvider>
       <DateProvider>
-        <div id="container">
+        <main id="container">
           <header className="add-head">
           <NavLink to='/' >
             <h1>Baby Tracker</h1>
@@ -46,7 +46,7 @@ function App() {
               <Route path='sleep-schedule-detail/:id' element={<DetailsPage />} />
             </Route>
           </Routes>
-        </div>
+        </main>
       </DateProvider>
     </NavProvider>
   )
