@@ -1,0 +1,12 @@
+dialog {
+  width: 380px;
+  padding: 1.5em;
+  border: none;
+  border-radius: 1em;
+  text-align: center;
+  background-image: linear-gradient(to right, #FFEEFC , #FFFCFF);
+}
+
+dialog .action-buttons {
+  margin-top: 2em;
+}

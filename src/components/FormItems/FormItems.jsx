@@ -1,4 +1,3 @@
-import { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import './FormItems.css';
 
@@ -83,22 +82,36 @@ Textarea.defaultProps = {
   value: ''
 };
 
-export function ActionButtons ({ primaryButtonText, secondaryButtonText, clickFn }) {
+export function ActionButtons ({
+  primaryButtonText,
+  secondaryButtonText,
+  primaryClickFn,
+  secondaryClickFn
+}) {
   return (
     <div className="action-buttons">
       <button
-        className="form__cancel"
         type="button"
-        onClick={clickFn}
+        className="form__cancel"
+        onClick={secondaryClickFn}
       >
         {secondaryButtonText}
       </button>
-      <input className="submit-form" type="submit" value={primaryButtonText} />
+      <input
+        type="submit"
+        className="submit-form"
+        onClick={primaryClickFn}
+        value={primaryButtonText}
+      />
     </div>
   )
 }
 ActionButtons.propTypes = {
   primaryButtonText: PropTypes.string.isRequired,
   secondaryButtonText: PropTypes.string.isRequired,
-  clickFn: PropTypes.func.isRequired
+  secondaryClickFn: PropTypes.func.isRequired,
+  primaryClickFn: PropTypes.func
+};
+ActionButtons.defaultProps = {
+  primaryClickFn: undefined
 };

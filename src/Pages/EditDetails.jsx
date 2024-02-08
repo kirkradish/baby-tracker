@@ -84,7 +84,7 @@ export default function EditDetails() {
         <ActionButtons
           primaryButtonText="Submit"
           secondaryButtonText="Cancel"
-          clickFn={handleCancel}
+          secondaryClickFn={handleCancel}
         />
       </Form>
     </section>
