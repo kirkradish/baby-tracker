@@ -1,22 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useContext } from 'react';
 import { useNavUpdate } from '../store/NavContext.jsx';
-import { NavLink, useLocation } from 'react-router-dom'
-import { notes as dataNotes } from '../assets/data/notes';
+import { NavLink } from 'react-router-dom'
+import { GlobalStateContext } from '../store/GlobalState.jsx';
 import ListItem from '../components/ListItem/ListItem';
 import { dateSorter } from '../assets/commonFns.js';
 import './Pages.css';
 
 export default function NotesPage() {
   const navUpdater = useNavUpdate();
-  const location = useLocation();
-  const [notes, setNotes] = useState(dataNotes);
+  const { notes } = useContext(GlobalStateContext);
 
+  // useCallback() ARE BE BETTER SUITED
+  // rather than functions in useEffect
   useEffect(() => {
     navUpdater(true);
     dateSorter(notes);
-    if (location.state !== null) {
-      setNotes(location.state.newNotes);
-    }
   }, []);
 
   useEffect(() => {

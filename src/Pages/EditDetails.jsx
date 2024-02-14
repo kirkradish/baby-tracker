@@ -1,37 +1,41 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { GlobalStateContext } from '../store/GlobalState.jsx';
 import { useNavUpdate } from '../store/NavContext.jsx';
 import { useDate } from '../store/DateContext';
-import { notes } from '../assets/data/notes';
+// import { notes } from '../assets/data/notes';
 import { Form, ActionButtons, Input, Textarea } from '../components/FormItems/FormItems';
-import { randomFourDigitId, dateSlashFormatter } from '../assets/commonFns';
+import { dateSlashFormatter } from '../assets/commonFns';
 import DateDropdown from '../components/Calendar/DateDropdown';
 
 export default function EditDetails() {
   const navUpdater = useNavUpdate();
   const navigate = useNavigate();
-  const [headerText, setHeaderText] = useState();
-  const [bodyText, setBodyText] = useState();
-  const inputDate = useDate();
   const { id } = useParams();
+  const { notes, addOrUpdateNote } = useContext(GlobalStateContext);
+  let curNote = notes.filter(note => note.id === id);
+  curNote = curNote[0] || curNote;
+  const [headerText, setHeaderText] = useState(curNote.header || '');
+  const [bodyText, setBodyText] = useState(curNote.body || '');
+  const inputDate = useDate(curNote.date || '');
   let editableNote;
 
-  function pageSetup() {
-    if (id) {
-      editableNote = notes.filter(note => note.id === id);
-      editableNote = editableNote[0];
-      setHeaderText(editableNote.header);
-      setBodyText(editableNote.body);
-    } else {
-      setHeaderText('');
-      setBodyText('');
-    }
-  }
+  // function pageSetup() {
+  //   if (id) {
+  //     editableNote = notes.filter(note => note.id === id);
+  //     editableNote = editableNote[0];
+  //     setHeaderText(editableNote.header);
+  //     setBodyText(editableNote.body);
+  //   } else {
+  //     setHeaderText('');
+  //     setBodyText('');
+  //   }
+  // }
 
-  useEffect(() => {
-    navUpdater(false);
-    pageSetup();
-  }, []);
+  // useEffect(() => {
+  //   navUpdater(false);
+  //   pageSetup();
+  // }, []);
 
   function handleHeaderChange(e) {
     setHeaderText(e.target.value);
@@ -41,26 +45,22 @@ export default function EditDetails() {
     setBodyText(e.target.value);
   }
   
-  function handleSubmit(e) {
+  function noteAssembly(e) {
     e.preventDefault();
+    const noteDate = dateSlashFormatter(inputDate);
+    const assebmledNote = {id, headerText, noteDate, bodyText};
+    addOrUpdateNote(assebmledNote);
+    id ? navigate(`../note-detail/${id}`) : navigate(-1);
 
-    if (headerText.length > 0) {
-      if (id) {
-        const curNote = notes.filter(note => note.id === id);
-        curNote[0].header = headerText
-        curNote[0].date = dateSlashFormatter(inputDate);
-        curNote[0].body = bodyText;
-        navigate(`../note-detail/${curNote[0].id}`);
-      } else {
-        notes.unshift({
-          id: randomFourDigitId().toString(),
-          header: headerText,
-          date: dateSlashFormatter(inputDate),
-          body: bodyText
-        });
-        navigate(-1);
-      }
-    }
+    // if (headerText.length > 0) {
+    //   if (id) {
+    //     const curNote = notes.filter(note => note.id === id);
+    //     curNote[0].header = headerText
+    //     curNote[0].date = dateSlashFormatter(inputDate);
+    //     curNote[0].body = bodyText;
+    //     navigate(`../note-detail/${curNote[0].id}`);
+    //   }
+    // }
   }
 
   function handleCancel() {
@@ -69,7 +69,7 @@ export default function EditDetails() {
 
   return (
     <section className="page tracker-container">
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={noteAssembly}>
         <Input
           labelText="header"
           value={headerText}

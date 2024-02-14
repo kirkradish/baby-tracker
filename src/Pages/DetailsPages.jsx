@@ -1,9 +1,9 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useContext } from 'react';
 import { NavLink } from 'react-router-dom'
+import { GlobalStateContext } from '../store/GlobalState.jsx';
 import { useNavUpdate } from '../store/NavContext.jsx';
 import { grabParentFromUrl } from '../assets/commonFns.js';
 import { useParams, useNavigate } from 'react-router-dom';
-import { notes } from '../assets/data/notes';
 import DeleteModal from '../components/DeleteModal/DeleteModal.jsx';
 import { bottleFeedings } from '../assets/data/bottleFeedings';
 import { pureeFeedinds } from '../assets/data/pureeFeedings.js';
@@ -13,6 +13,7 @@ import './DetailsPages.css';
 export default function DetailsPage() {
   const navUpdater = useNavUpdate();
   const dialog = useRef();
+  const { notes } = useContext(GlobalStateContext);
 
   useEffect(() => {
     navUpdater(false);
