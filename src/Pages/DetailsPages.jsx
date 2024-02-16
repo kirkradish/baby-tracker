@@ -13,7 +13,7 @@ import './DetailsPages.css';
 export default function DetailsPage() {
   const navUpdater = useNavUpdate();
   const dialog = useRef();
-  const { notes } = useContext(GlobalStateContext);
+  const { notes, notesUpdates } = useContext(GlobalStateContext);
 
   useEffect(() => {
     navUpdater(false);
@@ -48,8 +48,9 @@ export default function DetailsPage() {
 
   function checkDeleteResponse(response) {
     if (response === 'submit') {
-      const newNotes = notes.filter(note => note.id !== id);
-      navigate(`/${grabParentFromUrl()}`, {state: {newNotes}});
+      const updateType = 'DELETE_NOTE'
+      notesUpdates({id, updateType});
+      navigate(`/${grabParentFromUrl()}`);
     }
   }
 

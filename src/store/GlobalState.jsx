@@ -1,7 +1,7 @@
 import { createContext, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import { notes } from '../assets/data/notes';
-import { randomFourDigitId } from '../assets/commonFns';
+import { dateSorter, randomFourDigitId } from '../assets/commonFns';
 
 export const GlobalStateContext = createContext({
   notes: notes,
@@ -10,9 +10,9 @@ export const GlobalStateContext = createContext({
 
 function notesReducer(state, action) {
   const updatedNotes = [...state];
+  dateSorter(updatedNotes);
 
   if (action.type === 'ADD_NOTE') {
-    // account for adding a date earlier than the current date and reordering
     if (action.payload.headerText.length > 0) {
       updatedNotes.unshift({
         id: randomFourDigitId().toString(),
@@ -21,7 +21,6 @@ function notesReducer(state, action) {
         body: action.payload.bodyText
       });
     }
-    return updatedNotes;
   }
 
   if (action.type === 'UPDATE_NOTE') {
@@ -31,30 +30,28 @@ function notesReducer(state, action) {
       updatedNotes[curNoteIndex].date = action.payload.noteDate;
       updatedNotes[curNoteIndex].body = action.payload.bodyText;
     }
-    return updatedNotes;
   }
+
+  if (action.type === 'DELETE_NOTE') {
+    return updatedNotes.filter(note => note.id !== action.payload.id);
+  }
+  
+  return updatedNotes;
 }
 
 export default function GlobalStateProvider({ children }) {
   const [notesState, notesDispatch] = useReducer(notesReducer, notes);
 
-  function handleNewOrUpdatedNote(newNote) {
-    if (!newNote.id) {
-      notesDispatch({
-        type: 'ADD_NOTE',
-        payload: newNote
-      })
-    } else {
-      notesDispatch({
-        type: 'UPDATE_NOTE',
-        payload: newNote
-      })
-    }
+  function handleNotesUpdates(newNote) {
+    notesDispatch({
+      type: newNote.updateType,
+      payload: newNote
+    })
   }
 
   const gscValues = {
     notes: notesState,
-    addOrUpdateNote: handleNewOrUpdatedNote
+    notesUpdates: handleNotesUpdates
   };
 
   return (

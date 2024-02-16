@@ -12,30 +12,16 @@ export default function EditDetails() {
   const navUpdater = useNavUpdate();
   const navigate = useNavigate();
   const { id } = useParams();
-  const { notes, addOrUpdateNote } = useContext(GlobalStateContext);
+  const { notes, notesUpdates } = useContext(GlobalStateContext);
   let curNote = notes.filter(note => note.id === id);
   curNote = curNote[0] || curNote;
   const [headerText, setHeaderText] = useState(curNote.header || '');
   const [bodyText, setBodyText] = useState(curNote.body || '');
   const inputDate = useDate(curNote.date || '');
-  let editableNote;
 
-  // function pageSetup() {
-  //   if (id) {
-  //     editableNote = notes.filter(note => note.id === id);
-  //     editableNote = editableNote[0];
-  //     setHeaderText(editableNote.header);
-  //     setBodyText(editableNote.body);
-  //   } else {
-  //     setHeaderText('');
-  //     setBodyText('');
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   navUpdater(false);
-  //   pageSetup();
-  // }, []);
+  useEffect(() => {
+    navUpdater(false);
+  }, []);
 
   function handleHeaderChange(e) {
     setHeaderText(e.target.value);
@@ -48,19 +34,10 @@ export default function EditDetails() {
   function noteAssembly(e) {
     e.preventDefault();
     const noteDate = dateSlashFormatter(inputDate);
-    const assebmledNote = {id, headerText, noteDate, bodyText};
-    addOrUpdateNote(assebmledNote);
+    const updateType = id ? 'UPDATE_NOTE' : 'ADD_NOTE';
+    const assebmledNote = {id, headerText, noteDate, bodyText, updateType};
+    notesUpdates(assebmledNote);
     id ? navigate(`../note-detail/${id}`) : navigate(-1);
-
-    // if (headerText.length > 0) {
-    //   if (id) {
-    //     const curNote = notes.filter(note => note.id === id);
-    //     curNote[0].header = headerText
-    //     curNote[0].date = dateSlashFormatter(inputDate);
-    //     curNote[0].body = bodyText;
-    //     navigate(`../note-detail/${curNote[0].id}`);
-    //   }
-    // }
   }
 
   function handleCancel() {

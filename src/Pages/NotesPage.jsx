@@ -9,17 +9,13 @@ import './Pages.css';
 export default function NotesPage() {
   const navUpdater = useNavUpdate();
   const { notes } = useContext(GlobalStateContext);
+  dateSorter(notes);
 
   // useCallback() ARE BE BETTER SUITED
   // rather than functions in useEffect
   useEffect(() => {
     navUpdater(true);
-    dateSorter(notes);
   }, []);
-
-  useEffect(() => {
-    dateSorter(notes);
-  }, [notes]);
 
   return(
     <section className="page tracker-container">
