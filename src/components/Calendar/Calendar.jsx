@@ -8,9 +8,11 @@ import "react-datepicker/dist/react-datepicker.css";
 // import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 // https://www.npmjs.com/package/react-datepicker?activeTab=readme
 
-export default function Calendar() {
-  const dateUpdater = useDateUpdate(new Date());
-  const theDate = useDate();
+export default function Calendar({ itemDate }) {
+  const dateUpdater = useDateUpdate();
+  const contextDate = useDate();
+  const propDate = itemDate.length > 1 ? new Date(itemDate) : undefined;
+  const theDate = propDate || contextDate;
 
   function handleChange(date) {
     dateUpdater(date);
@@ -22,5 +24,12 @@ export default function Calendar() {
 }
 
 Calendar.propTypes = {
-  dateLifter: PropTypes.func.isRequired
-}
+  itemDate: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.string
+  ])
+};
+
+Calendar.defaultProps = {
+  itemDate: ''
+};

@@ -18,14 +18,10 @@ export default function DateDropdown({ showClearFilter }) {
     dateUpdater(currentDate);
   }
 
-  function grabCalendarDate(selectedDate) {
-    dateUpdater(selectedDate);
-  }
-
   return (
     <div className="date-dropdown">
       <p className="date-dropdown-title">Select a date</p>
-      <Calendar dateLifter={grabCalendarDate} />
+      <Calendar />
       {formattedDateFilterDate != currentDateFormatted && showClearFilter && (
         <button className="clear-calendar-filter" onClick={handleFilter}>Back to today</button>
       )}

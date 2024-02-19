@@ -2,8 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { GlobalStateContext } from '../store/GlobalState.jsx';
 import { useNavUpdate } from '../store/NavContext.jsx';
-import { useDate } from '../store/DateContext';
-// import { notes } from '../assets/data/notes';
+import { useDate, useDateUpdate } from '../store/DateContext';
 import { Form, ActionButtons, Input, Textarea } from '../components/FormItems/FormItems';
 import { dateSlashFormatter } from '../assets/commonFns';
 import DateDropdown from '../components/Calendar/DateDropdown';
@@ -11,16 +10,19 @@ import DateDropdown from '../components/Calendar/DateDropdown';
 export default function EditDetails() {
   const navUpdater = useNavUpdate();
   const navigate = useNavigate();
+  const contextDate = useDate();
+  const dateUpdater = useDateUpdate();
   const { id } = useParams();
   const { notes, notesUpdates } = useContext(GlobalStateContext);
   let curNote = notes.filter(note => note.id === id);
   curNote = curNote[0] || curNote;
   const [headerText, setHeaderText] = useState(curNote.header || '');
   const [bodyText, setBodyText] = useState(curNote.body || '');
-  const inputDate = useDate(curNote.date || '');
+  const inputDate = curNote.date || contextDate;
 
   useEffect(() => {
     navUpdater(false);
+    dateUpdater(id ? new Date(curNote.date) : new Date());
   }, []);
 
   function handleHeaderChange(e) {
@@ -33,7 +35,7 @@ export default function EditDetails() {
   
   function noteAssembly(e) {
     e.preventDefault();
-    const noteDate = dateSlashFormatter(inputDate);
+    const noteDate = dateSlashFormatter(new Date(contextDate));
     const updateType = id ? 'UPDATE_NOTE' : 'ADD_NOTE';
     const assebmledNote = {id, headerText, noteDate, bodyText, updateType};
     notesUpdates(assebmledNote);
@@ -52,7 +54,7 @@ export default function EditDetails() {
           value={headerText}
           onChange={handleHeaderChange}
         />
-        <DateDropdown />
+        <DateDropdown itemDate={inputDate} />
         <Textarea
           labelText="body"
           value={bodyText}
