@@ -67,12 +67,15 @@ export default function DetailsPage() {
       />
       <section className="page tracker-container">
         <div className="details-masthead">
-          <button className="page-function" onClick={handleBackClick}>
+          <button className="page-function details-masthead__back" onClick={handleBackClick}>
             <span className="material-symbols-outlined">arrow_back_ios</span>
           </button>
-          <NavLink to={`../editor/${id}`}>
+          <NavLink to={`../editor/${id}`} className="details-masthead__edit">
             <span className="material-symbols-outlined">edit</span>
           </NavLink>
+          <button onClick={handleDeleteButtonClick} className="details-masthead__delete">
+            <span className="material-symbols-outlined">delete</span>
+          </button>
         </div>
 
         <article key={idObj.id} className="detail-content">
@@ -82,12 +85,6 @@ export default function DetailsPage() {
           </header>
           <p>{idObj.body}</p>
         </article>
-
-        <div className="details-footer">
-          <button onClick={handleDeleteButtonClick}>
-            <span className="material-symbols-outlined">delete</span>
-          </button>
-        </div>
       </section>
     </>
   );

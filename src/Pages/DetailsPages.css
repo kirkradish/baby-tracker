@@ -6,9 +6,12 @@
 
 .details-masthead {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
   font-size: 1em;
   margin-bottom: 2em;
+}
+.details-masthead__edit {
+  margin: 0 2em -6px auto;
 }
 .details-masthead span {
   display: inline-block;
@@ -17,6 +20,7 @@
   display: flex;
   align-items: center;
   color: #5C41DD;
+  padding: 0;
 }
 .details-masthead--end  {
   justify-content: end;
@@ -40,7 +44,7 @@
 
 .detail-content p {
   flex: 2 0 0;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .details-footer {

@@ -3,9 +3,10 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { GlobalStateContext } from '../store/GlobalState.jsx';
 import { useNavUpdate } from '../store/NavContext.jsx';
 import { useDate, useDateUpdate } from '../store/DateContext';
-import { Form, ActionButtons, Input, Textarea } from '../components/FormItems/FormItems';
+import { Form, Input, Textarea } from '../components/FormItems/FormItems';
 import { dateSlashFormatter } from '../assets/commonFns';
 import DateDropdown from '../components/Calendar/DateDropdown';
+import './Pages.css';
 
 export default function EditDetails() {
   const navUpdater = useNavUpdate();
@@ -47,7 +48,16 @@ export default function EditDetails() {
   }
 
   return (
-    <section className="page tracker-container">
+    <section className="page page-edit tracker-container">
+      <header>
+        <button
+          className="page-edit__return material-symbols-outlined"
+          onClick={handleCancel}
+        >
+          <span>close</span>
+        </button>
+        <h2 className="page-edit__header">{id ? 'Edit Note' : 'Add Note'}</h2>
+      </header>
       <Form onSubmit={noteAssembly}>
         <Input
           labelText="header"
@@ -60,11 +70,13 @@ export default function EditDetails() {
           value={bodyText}
           onChange={handleBodyChange}
         />
-        <ActionButtons
-          primaryButtonText="Submit"
-          secondaryButtonText="Cancel"
-          secondaryClickFn={handleCancel}
-        />
+        <div className="form-submit">
+          <input
+            type="submit"
+            className="submit-form"
+            value={"Submit"}
+          />
+        </div>
       </Form>
     </section>
   );
