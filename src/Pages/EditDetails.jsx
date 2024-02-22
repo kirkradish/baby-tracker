@@ -6,7 +6,7 @@ import { useDate, useDateUpdate } from '../store/DateContext';
 import { Form, Input, Textarea } from '../components/FormItems/FormItems';
 import { dateSlashFormatter } from '../assets/commonFns';
 import DateDropdown from '../components/Calendar/DateDropdown';
-import './Pages.css';
+import '../components/FormItems/FormItems.css';
 
 export default function EditDetails() {
   const navUpdater = useNavUpdate();
@@ -36,6 +36,7 @@ export default function EditDetails() {
   
   function noteAssembly(e) {
     e.preventDefault();
+    console.log('submitted');
     const noteDate = dateSlashFormatter(new Date(contextDate));
     const updateType = id ? 'UPDATE_NOTE' : 'ADD_NOTE';
     const assebmledNote = {id, headerText, noteDate, bodyText, updateType};
@@ -70,13 +71,11 @@ export default function EditDetails() {
           value={bodyText}
           onChange={handleBodyChange}
         />
-        <div className="form-submit">
-          <input
-            type="submit"
-            className="submit-form"
-            value={"Submit"}
-          />
-        </div>
+        <input
+          type="submit"
+          className="submit-form"
+          value={"Submit"}
+        />
       </Form>
     </section>
   );

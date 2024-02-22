@@ -58,9 +58,12 @@
   display: flex;
   justify-content: space-between;
 }
-.action-buttons * {
+.action-buttons *,
+.submit-form {
   padding: .75em 0;
   border-radius: 3em;
+}
+.action-buttons * {
   width: calc(50% - .5em);
 }
 button.form__cancel {
@@ -81,6 +84,7 @@ button.form__cancel:hover {
   font-weight: 600;
   background-color: #5C41DD;
   border: 0;
+  cursor: pointer;
 }
 .submit-form:hover {
   background-color: #3D22BE;
