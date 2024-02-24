@@ -1,38 +1,38 @@
-export const bottleFeedings = [
+export const bottles = [
   {
-    id: "6",
+    id: "2450",
     header: "7:00am",
-    date: "1/31/2024",
+    date: "2/21/2024",
     body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text."
   },
   {
-    id: "5",
+    id: "5386",
     header: "10:00pm",
-    date: "1/30/2024",
+    date: "2/22/2024",
     body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text."
   },
   {
-    id: "4",
+    id: "4753",
     header: "7:00pm",
-    date: "1/30/2024",
+    date: "2/23/2024",
     body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text."
   },
   {
-    id: "3",
+    id: "3567",
     header: "10:00pm",
-    date: "1/29/2024",
+    date: "2/24/2024",
     body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text."
   },
   {
-    id: "2",
+    id: "2678",
     header: "7:00pm",
-    date: "1/29/2024",
+    date: "2/25/2024",
     body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text."
   },
   {
-    id: "1",
+    id: "1895",
     header: "7:00pm",
-    date: "1/28/2024",
+    date: "2/26/2024",
     body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text."
   }
 ];

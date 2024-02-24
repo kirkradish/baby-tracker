@@ -19,7 +19,7 @@ export default function NavigationBar() {
       <NavItem
         Icon={BottleIcon}
         text="Bottle Feedings"
-        endPath="bottle-feedings"
+        endPath="bottles"
       />
       <NavItem
         Icon={PureeIcon}

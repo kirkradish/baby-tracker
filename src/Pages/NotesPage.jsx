@@ -32,7 +32,7 @@ export default function NotesPage() {
           <ListItem
             key={item.id}
             id={item.id}
-            path="note-detail"
+            path="detail"
             header={item.header}
             aside={item.date}
           />

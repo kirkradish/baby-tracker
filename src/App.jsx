@@ -33,11 +33,13 @@ function App() {
                 <Route index={true} element={<NotesPage />}></Route>
                 <Route path='editor/' element={<EditDetails />} />
                 <Route path='editor/:id' element={<EditDetails />} />
-                <Route path='note-detail/:id' element={<DetailsPage />} />
+                <Route path='detail/:id' element={<DetailsPage />} />
               </Route>
-              <Route path='bottle-feedings'>
+              <Route path='bottles'>
                 <Route index={true} element={<BottleFeedingsPage />}></Route>
-                <Route path='bottle-feeding-detail/:id' element={<DetailsPage />} />
+                <Route path='editor/' element={<EditDetails />} />
+                <Route path='editor/:id' element={<EditDetails />} />
+                <Route path='detail/:id' element={<DetailsPage />} />
               </Route>
               <Route path='puree-foods'>
                 <Route index={true} element={<PureePage />}></Route>

@@ -1,7 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
+import { NavLink } from 'react-router-dom'
+import { GlobalStateContext } from '../store/GlobalState.jsx';
 import { useNavUpdate } from '../store/NavContext.jsx';
 import { useDate } from '../store/DateContext';
-import { bottleFeedings } from '../assets/data/bottleFeedings';
 import DateDropdown from '../components/Calendar/DateDropdown';
 import ListItem from '../components/ListItem/ListItem';
 import './Pages.css';
@@ -9,8 +10,9 @@ import './Pages.css';
 export default function BottleFeedingsPage() {
   const navUpdater = useNavUpdate();
   const contextDate = useDate();
+  const { bottles } = useContext(GlobalStateContext);
   const formattedDateFilterDate = `${contextDate.getMonth() + 1}/${contextDate.getDate()}/${contextDate.getFullYear()}`;
-  const filteredList = bottleFeedings.filter(item => (item.date === formattedDateFilterDate));
+  const filteredList = bottles.filter(item => (item.date === formattedDateFilterDate));
 
   useEffect(() => {
     navUpdater(true);
@@ -18,6 +20,14 @@ export default function BottleFeedingsPage() {
 
   return (
     <section className="page tracker-container">
+      <div className="details-masthead details-masthead--end">
+        <NavLink to='editor'>
+          <button className="entry-function">
+            <span className="bold-text">Add note</span>
+            <span className="material-symbols-outlined">add</span>
+          </button>
+        </NavLink>
+      </div>
       <div className="date-picker">
         <DateDropdown showClearFilter={true} />
       </div>
@@ -26,7 +36,7 @@ export default function BottleFeedingsPage() {
           <ListItem
             key={item.id}
             id={item.id}
-            path="bottle-feeding-detail"
+            path="detail"
             header={item.header}
             aside={item.date}
           />

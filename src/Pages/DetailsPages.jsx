@@ -5,7 +5,6 @@ import { useNavUpdate } from '../store/NavContext.jsx';
 import { grabParentFromUrl } from '../assets/commonFns.js';
 import { useParams, useNavigate } from 'react-router-dom';
 import DeleteModal from '../components/DeleteModal/DeleteModal.jsx';
-import { bottleFeedings } from '../assets/data/bottleFeedings';
 import { pureeFeedinds } from '../assets/data/pureeFeedings.js';
 import { sleepSchedule } from '../assets/data/sleepSchedule';
 import './DetailsPages.css';
@@ -13,7 +12,7 @@ import './DetailsPages.css';
 export default function DetailsPage() {
   const navUpdater = useNavUpdate();
   const dialog = useRef();
-  const { notes, notesUpdates } = useContext(GlobalStateContext);
+  const { notes, notesUpdates, bottles, bottleUpdates } = useContext(GlobalStateContext);
 
   useEffect(() => {
     navUpdater(false);
@@ -28,28 +27,30 @@ export default function DetailsPage() {
   }
 
   const parentPageData = grabParentFromUrl();
-  let displayObj;
+  const detailGroup = {};
   
   switch(parentPageData) {
-    case 'bottle-feedings' :
-      displayObj = bottleFeedings;
+    case 'bottles' :
+      detailGroup.detailParent = bottles;
+      detailGroup.updater = bottleUpdates;
       break;
     case 'puree-foods' :
-      displayObj = pureeFeedinds;
+      detailGroup.detailParent = pureeFeedinds;
       break;
     case 'sleep-schedule' :
-      displayObj = sleepSchedule;
+      detailGroup.detailParent = sleepSchedule;
       break;
     default:
-      displayObj = notes;
+      detailGroup.detailParent = notes;
+      detailGroup.updater = notesUpdates;
   }
 
-  const idObj = displayObj.filter(item => item.id === id)[0];
+  const idObj = detailGroup.detailParent.filter(item => item.id === id)[0];
 
   function checkDeleteResponse(response) {
     if (response === 'submit') {
-      const updateType = 'DELETE_NOTE'
-      notesUpdates({id, updateType});
+      const updateType = 'DELETE_ITEM'
+      detailGroup.updater({id, updateType});
       navigate(`/${grabParentFromUrl()}`);
     }
   }

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import './FormItems.css';
 
@@ -19,27 +20,34 @@ export function Input({
   placeholderText,
   additionalClasses,
   value,
-  onChange
+  lifter
 }) {
+  const [inputValue, setInputValue] = useState(value);
+
+  function handleChange(e) {
+    lifter(e.target.value);
+    setInputValue(e.target.value);
+  }
+
   return (
     <div className={`input-group input-group__header ${additionalClasses}`}>
       <label>{labelText}</label>
       <input
         type={inputType}
         placeholder={placeholderText}
-        value={value}
-        onChange={onChange}
+        value={inputValue}
+        onChange={handleChange}
       />
     </div>
   );
 }
 Input.propTypes = {
   labelText: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
   inputType: PropTypes.string,
   placeholderText: PropTypes.string,
   additionalClasses: PropTypes.string,
-  value: PropTypes.string
+  value: PropTypes.string,
+  lifter: PropTypes.func.isRequired
 };
 Input.defaultProps = {
   inputType: 'text',
@@ -53,15 +61,22 @@ export const Textarea = ({
   placeholderText,
   additionalClasses,
   value,
-  onChange
+  lifter
 }) => {
+  const [textareaValue, setTextareaValue] = useState(value);
+
+  function handleChange(e) {
+    lifter(e.target.value);
+    setTextareaValue(e.target.value);
+  }
+
   return (
     <div className={`input-group input-group__body ${additionalClasses}`}>
       <label>{labelText}</label>
       <textarea
         placeholder={placeholderText}
-        value={value}
-        onChange={onChange}
+        value={textareaValue}
+        onChange={handleChange}
       >
       </textarea>
     </div>
@@ -69,11 +84,11 @@ export const Textarea = ({
 }
 Textarea.propTypes = {
   labelText: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
   inputType: PropTypes.string,
   placeholderText: PropTypes.string,
   additionalClasses: PropTypes.string,
-  value: PropTypes.string
+  value: PropTypes.string,
+  lifter: PropTypes.func.isRequired
 };
 Textarea.defaultProps = {
   inputType: 'text',
