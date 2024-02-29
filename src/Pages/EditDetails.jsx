@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { GlobalStateContext } from '../store/GlobalState.jsx';
 import { useNavUpdate } from '../store/NavContext.jsx';
@@ -14,6 +14,7 @@ export default function EditDetails() {
   const contextDate = useDate();
   const dateUpdater = useDateUpdate();
   const { notes, notesUpdates, bottles, bottleUpdates } = useContext(GlobalStateContext);
+  const [ isHeaderValid, setIsHeaderValid ] = useState(true);
   const { id } = useParams();
   const pageGroup = {};
 
@@ -57,8 +58,10 @@ export default function EditDetails() {
     if (headerText) {
       const assebmledNote = {id, headerText, noteDate, bodyText, updateType};
       pageGroup.updater(assebmledNote);
+      id ? navigate(`../detail/${id}`) : navigate(-1);
+    } else {
+      setIsHeaderValid(prevState => !prevState);
     }
-    id ? navigate(`../detail/${id}`) : navigate(-1);
   }
 
   function handleCancel() {
@@ -82,6 +85,8 @@ export default function EditDetails() {
           labelText="header"
           value={curItem.header || ''}
           lifter={inputLifter}
+          validity={isHeaderValid}
+          errorText="Header text is required"
         />
         <DateDropdown itemDate={inputDate} />
         <Textarea

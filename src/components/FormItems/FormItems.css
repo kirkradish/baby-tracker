@@ -84,3 +84,8 @@ button.form__cancel:hover {
 .submit-form:hover {
   background-color: #3D22BE;
 }
+.form-error {
+  font-size: .8em;
+  font-style: italic;
+  color: #FF3434;
+}

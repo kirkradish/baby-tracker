@@ -21,7 +21,9 @@ export function Input({
   placeholderText,
   additionalClasses,
   value,
-  lifter
+  lifter,
+  validity,
+  errorText
 }) {
   const [inputValue, setInputValue] = useState(value);
 
@@ -39,7 +41,9 @@ export function Input({
         placeholder={placeholderText}
         value={inputValue}
         onChange={handleChange}
+        className={!validity ? 'invalid-input' : ''}
       />
+      {!validity && <p className="form-error">{errorText}</p>}
     </div>
   );
 }
@@ -50,13 +54,16 @@ Input.propTypes = {
   placeholderText: PropTypes.string,
   additionalClasses: PropTypes.string,
   value: PropTypes.string,
-  lifter: PropTypes.func.isRequired
+  lifter: PropTypes.func.isRequired,
+  validity: PropTypes.bool.isRequired,
+  errorText:PropTypes.string,
 };
 Input.defaultProps = {
   inputType: 'text',
   placeholderText: ' ',
   additionalClasses: '',
-  value: ''
+  value: '',
+  errorText: 'This field is required',
 };
 
 export const Textarea = ({
