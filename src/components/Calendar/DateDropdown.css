@@ -6,8 +6,9 @@
   font-size: 1em;
   color: #363636;
   padding: 1em;
-  border: 1px solid #5C41DD;
+  border: none;
   border-radius: .7em;
+  background: #FFF3FD;
 }
 
 .date-dropdown {
@@ -17,14 +18,13 @@
 }
 .date-dropdown p {
   position: absolute;
-  top: -12px;
-  left: 12px;
+  top: -1.5em;
+  left: -.3em;
   z-index: 1;
   font-size: .8em;
   padding: 2px;
   margin-bottom: 0;
   color: #5C41DD;
-  background: #ffffff;
 }
 
 .clear-calendar-filter {

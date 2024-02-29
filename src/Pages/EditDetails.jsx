@@ -54,8 +54,10 @@ export default function EditDetails() {
     const updateType = id ? 'UPDATE_ITEM' : 'ADD_ITEM';
     const headerText = liftedInputContent.input;
     const bodyText = liftedInputContent.textarea;
-    const assebmledNote = {id, headerText, noteDate, bodyText, updateType};
-    pageGroup.updater(assebmledNote);
+    if (headerText) {
+      const assebmledNote = {id, headerText, noteDate, bodyText, updateType};
+      pageGroup.updater(assebmledNote);
+    }
     id ? navigate(`../detail/${id}`) : navigate(-1);
   }
 
@@ -76,12 +78,14 @@ export default function EditDetails() {
       </header>
       <Form onSubmit={noteAssembly}>
         <Input
+          id="header"
           labelText="header"
           value={curItem.header || ''}
           lifter={inputLifter}
         />
         <DateDropdown itemDate={inputDate} />
         <Textarea
+          id="body"
           labelText="body"
           value={curItem.body || ''}
           lifter={textareaLifter}

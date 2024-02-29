@@ -15,6 +15,7 @@ Form.propTypes = {
 };
 
 export function Input({
+  id,
   labelText,
   inputType,
   placeholderText,
@@ -31,8 +32,9 @@ export function Input({
 
   return (
     <div className={`input-group input-group__header ${additionalClasses}`}>
-      <label>{labelText}</label>
+      <label htmlFor={id}>{labelText}</label>
       <input
+        id={id}
         type={inputType}
         placeholder={placeholderText}
         value={inputValue}
@@ -42,6 +44,7 @@ export function Input({
   );
 }
 Input.propTypes = {
+  id: PropTypes.string.isRequired,
   labelText: PropTypes.string.isRequired,
   inputType: PropTypes.string,
   placeholderText: PropTypes.string,
@@ -57,6 +60,7 @@ Input.defaultProps = {
 };
 
 export const Textarea = ({
+  id,
   labelText,
   placeholderText,
   additionalClasses,
@@ -72,8 +76,9 @@ export const Textarea = ({
 
   return (
     <div className={`input-group input-group__body ${additionalClasses}`}>
-      <label>{labelText}</label>
+      <label htmlFor={id}>{labelText}</label>
       <textarea
+        id={id}
         placeholder={placeholderText}
         value={textareaValue}
         onChange={handleChange}
@@ -83,6 +88,7 @@ export const Textarea = ({
   );
 }
 Textarea.propTypes = {
+  id: PropTypes.string.isRequired,
   labelText: PropTypes.string.isRequired,
   inputType: PropTypes.string,
   placeholderText: PropTypes.string,
