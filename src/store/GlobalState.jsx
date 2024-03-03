@@ -6,7 +6,7 @@ import { dateSorter, randomFourDigitId } from '../assets/commonFns';
 
 export const GlobalStateContext = createContext({
   notes,
-  addNote: () => {},
+  notesUpdates: () => {},
   bottles,
   bottleUpdates: () => {}
 });
@@ -21,6 +21,7 @@ function crudReducer(state, action) {
         id: randomFourDigitId().toString(),
         header: action.payload.headerText,
         date: action.payload.noteDate,
+        time: action.payload.noteTime,
         body: action.payload.bodyText
       });
     }
@@ -31,6 +32,7 @@ function crudReducer(state, action) {
       const curNoteIndex = updatedGroup.findIndex(x => x.id === action.payload.id);
       updatedGroup[curNoteIndex].header = action.payload.headerText;
       updatedGroup[curNoteIndex].date = action.payload.noteDate;
+      updatedGroup[curNoteIndex].time = action.payload.noteTime;
       updatedGroup[curNoteIndex].body = action.payload.bodyText;
     }
   }

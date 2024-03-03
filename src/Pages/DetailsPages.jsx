@@ -45,7 +45,7 @@ export default function DetailsPage() {
       detailGroup.updater = notesUpdates;
   }
 
-  const idObj = detailGroup.detailParent.filter(item => item.id === id)[0];
+  let idObj = detailGroup.detailParent.filter(item => item.id === id)[0];
 
   function checkDeleteResponse(response) {
     if (response === 'submit') {
@@ -84,7 +84,10 @@ export default function DetailsPage() {
             <h2>{idObj.header}</h2>
             <aside>{idObj.date}</aside>
           </header>
-          <p>{idObj.body}</p>
+          <p>
+            {grabParentFromUrl() !== 'notes' && <span style={{display: 'block'}}>{idObj.time}</span>}
+            {idObj.body}
+          </p>
         </article>
       </section>
     </>

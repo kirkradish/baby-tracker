@@ -7,6 +7,7 @@
 .input-group {
   position: relative;
   margin-bottom: 2em;
+  width: 100%;
 }
 
 .input-group label {

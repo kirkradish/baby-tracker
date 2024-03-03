@@ -37,7 +37,7 @@ function App() {
               </Route>
               <Route path='bottles'>
                 <Route index={true} element={<BottleFeedingsPage />}></Route>
-                <Route path='editor/' element={<EditDetails />} />
+                <Route path='add-bottle/' element={<EditDetails />} />
                 <Route path='editor/:id' element={<EditDetails />} />
                 <Route path='detail/:id' element={<DetailsPage />} />
               </Route>

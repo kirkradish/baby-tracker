@@ -56,3 +56,8 @@ button {
   font-size: .9em;
 }
 
+.flex-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+}

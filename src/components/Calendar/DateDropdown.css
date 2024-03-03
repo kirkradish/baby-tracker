@@ -15,6 +15,7 @@
   position: relative;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   margin-bottom: 2em;
+  width: 100%;
 }
 .date-dropdown p {
   position: absolute;

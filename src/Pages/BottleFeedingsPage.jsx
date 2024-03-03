@@ -21,9 +21,9 @@ export default function BottleFeedingsPage() {
   return (
     <section className="page tracker-container">
       <div className="details-masthead details-masthead--end">
-        <NavLink to='editor'>
+        <NavLink to='add-bottle'>
           <button className="entry-function">
-            <span className="bold-text">Add note</span>
+            <span className="bold-text">Add bottle feeding</span>
             <span className="material-symbols-outlined">add</span>
           </button>
         </NavLink>
@@ -38,7 +38,7 @@ export default function BottleFeedingsPage() {
             id={item.id}
             path="detail"
             header={item.header}
-            aside={item.date}
+            aside={item.time}
           />
         ))
       ) : (
