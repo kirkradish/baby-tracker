@@ -43,11 +43,11 @@ function App() {
               </Route>
               <Route path='puree-foods'>
                 <Route index={true} element={<PureePage />}></Route>
-                <Route path='puree-detail/:id' element={<DetailsPage />} />
+                <Route path='detail/:id' element={<DetailsPage />} />
               </Route>
               <Route path='sleep-schedule'>
                 <Route index={true} element={<SleepPage />}></Route>
-                <Route path='sleep-schedule-detail/:id' element={<DetailsPage />} />
+                <Route path='detail/:id' element={<DetailsPage />} />
               </Route>
             </Routes>
           </main>

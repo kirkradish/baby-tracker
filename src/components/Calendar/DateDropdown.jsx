@@ -4,7 +4,7 @@ import Calendar from './Calendar';
 import { dateSlashFormatter } from '../../assets/commonFns';
 import './DateDropdown.css';
 
-export default function DateDropdown({ showClearFilter }) {
+export default function DateDropdown({ lifter, inputDate, showClearFilter }) {
   const currentDate = new Date();
   const dateUpdater = useDateUpdate();
   const contextDate = useDate();
@@ -12,7 +12,7 @@ export default function DateDropdown({ showClearFilter }) {
   const currentDateFormatted = dateSlashFormatter(currentDate);
   const contextDateFormatted = dateSlashFormatter(contextDate);
 
-  const formattedDateFilterDate = contextDate ? contextDateFormatted : currentDateFormatted;
+  const formattedDateFilterDate = (!inputDate && contextDate) ? contextDateFormatted : currentDateFormatted;
 
   function handleFilter() {
     dateUpdater(currentDate);
@@ -21,7 +21,7 @@ export default function DateDropdown({ showClearFilter }) {
   return (
     <div className="date-dropdown">
       <p className="date-dropdown-title">Select a date</p>
-      <Calendar />
+      <Calendar lifter={lifter} inputDate={inputDate} />
       {formattedDateFilterDate != currentDateFormatted && showClearFilter && (
         <button className="clear-calendar-filter" onClick={handleFilter}>Back to today</button>
       )}
@@ -30,9 +30,16 @@ export default function DateDropdown({ showClearFilter }) {
 }
 
 DateDropdown.propTypes = {
-  showClearFilter: PropTypes.bool.isRequired
+  lifter: PropTypes.func,
+  inputDate: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.string
+  ]),
+  showClearFilter: PropTypes.bool
 };
 
 DateDropdown.defaultProps = {
+  lifter: undefined,
+  inputDate: '',
   showClearFilter: false
 };

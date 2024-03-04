@@ -50,6 +50,10 @@ export default function EditDetails() {
     liftedInputContent.input = inputValue;
   }
 
+  const dateLifter = (d) => {
+    liftedInputContent.date = d;
+  }
+
   function timeLifter(timeValue) {
     liftedInputContent.time = timeValue;
   }
@@ -67,7 +71,8 @@ export default function EditDetails() {
   
   function noteAssembly(e) {
     e.preventDefault();
-    const noteDate = dateSlashFormatter(new Date(contextDate));
+    console.log(liftedInputContent.date);
+    const noteDate = liftedInputContent.date ? dateSlashFormatter(liftedInputContent.date) : curItem.date;
     const updateType = id ? 'UPDATE_ITEM' : 'ADD_ITEM';
     let headerText = liftedInputContent.input || curItem.header.split(" ").splice(0, 1).toString();
     headerText = (pageGroup.page === 'bottles') ? `${headerText} ${pageGroup.measurement}` : headerText;
@@ -123,7 +128,7 @@ export default function EditDetails() {
           )}
         </div>
         <div className="flex-group">
-          <DateDropdown itemDate={inputDate} />
+          <DateDropdown lifter={dateLifter} inputDate={inputDate} />
           {pageGroup.page === 'bottles' && (
             <Input
               id="time"

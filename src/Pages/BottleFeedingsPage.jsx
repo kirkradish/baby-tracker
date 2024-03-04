@@ -1,22 +1,26 @@
-import { useEffect, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { NavLink } from 'react-router-dom'
 import { GlobalStateContext } from '../store/GlobalState.jsx';
 import { useNavUpdate } from '../store/NavContext.jsx';
-import { useDate } from '../store/DateContext';
 import DateDropdown from '../components/Calendar/DateDropdown';
 import ListItem from '../components/ListItem/ListItem';
 import './Pages.css';
 
 export default function BottleFeedingsPage() {
+  const [stateDate, setStateDate] = useState(new Date());
   const navUpdater = useNavUpdate();
-  const contextDate = useDate();
   const { bottles } = useContext(GlobalStateContext);
-  const formattedDateFilterDate = `${contextDate.getMonth() + 1}/${contextDate.getDate()}/${contextDate.getFullYear()}`;
+
+  const formattedDateFilterDate = `${stateDate.getMonth() + 1}/${stateDate.getDate()}/${stateDate.getFullYear()}`;
   const filteredList = bottles.filter(item => (item.date === formattedDateFilterDate));
 
   useEffect(() => {
     navUpdater(true);
   }, []);
+
+  const dateLifter = (d) => {
+    setStateDate(d);
+  }
 
   return (
     <section className="page tracker-container">
@@ -29,7 +33,7 @@ export default function BottleFeedingsPage() {
         </NavLink>
       </div>
       <div className="date-picker">
-        <DateDropdown showClearFilter={true} />
+        <DateDropdown lifter={dateLifter} inputDate={stateDate} showClearFilter={true} />
       </div>
       {filteredList.length > 0 ? (
         filteredList.map(item => (
