@@ -19,7 +19,6 @@ export default function BottleFeedingsPage() {
   }, []);
 
   const dateLifter = (d) => {
-    console.log(`d: ${d}`);
     setStateDate(d);
   }
 

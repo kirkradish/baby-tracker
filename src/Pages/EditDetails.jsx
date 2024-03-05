@@ -5,7 +5,7 @@ import { useNavUpdate } from '../store/NavContext.jsx';
 import { useDate, useDateUpdate } from '../store/DateContext';
 import { Form, Input, Textarea } from '../components/FormItems/FormItems';
 import { grabParentFromUrl, selectPageTypeData, dateSlashFormatter } from '../assets/commonFns';
-import DateDropdown from '../components/Calendar/DateDropdown';
+import Calendar from '../components/Calendar/Calendar';
 import MeasurementToggle from '../components/MeasurementToggle/MeasurementToggle.jsx';
 import '../components/FormItems/FormItems.css';
 
@@ -71,8 +71,7 @@ export default function EditDetails() {
   
   function noteAssembly(e) {
     e.preventDefault();
-    console.log(liftedInputContent.date);
-    const noteDate = liftedInputContent.date ? dateSlashFormatter(liftedInputContent.date) : curItem.date;
+    const noteDate = liftedInputContent.date ? dateSlashFormatter(liftedInputContent.date) : dateSlashFormatter(inputDate);
     const updateType = id ? 'UPDATE_ITEM' : 'ADD_ITEM';
     let headerText = liftedInputContent.input || curItem.header.split(" ").splice(0, 1).toString();
     headerText = (pageGroup.page === 'bottles') ? `${headerText} ${pageGroup.measurement}` : headerText;
@@ -128,7 +127,7 @@ export default function EditDetails() {
           )}
         </div>
         <div className="flex-group">
-          <DateDropdown lifter={dateLifter} inputDate={inputDate} />
+          <Calendar lifter={dateLifter} inputDate={new Date(inputDate)} />
           {pageGroup.page === 'bottles' && (
             <Input
               id="time"

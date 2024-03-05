@@ -2,6 +2,7 @@ import { useState } from 'react';
 import DatePicker from "react-datepicker";
 import PropTypes from 'prop-types';
 import { dateSlashFormatter } from '../../assets/commonFns';
+import './CalendarDropdown.css';
 
 import "react-datepicker/dist/react-datepicker.css";
 

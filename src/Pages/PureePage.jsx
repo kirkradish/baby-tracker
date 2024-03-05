@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavUpdate } from '../store/NavContext.jsx';
 import { pureeFeedinds } from '../assets/data/pureeFeedings.js';
-import DateDropdown from '../components/Calendar/DateDropdown.jsx';
+import Calendar from '../components/Calendar/Calendar.jsx';
 import ListItem from '../components/ListItem/ListItem.jsx';
 import './Pages.css';
 
@@ -23,7 +23,7 @@ export default function PureePage() {
   return (
     <section className="page tracker-container">
       <div className="date-picker">
-        <DateDropdown lifter={dateLifter} inputDate={stateDate} showClearFilter={true} />
+        <Calendar lifter={dateLifter} inputDate={stateDate} showClearFilter={true} />
       </div>
       {filteredList.length > 0 ? (
         filteredList.map(item => (

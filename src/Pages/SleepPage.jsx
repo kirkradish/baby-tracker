@@ -1,15 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useNavUpdate } from '../store/NavContext.jsx';
-import { useDate } from '../store/DateContext';
 import { sleepSchedule } from '../assets/data/sleepSchedule';
-import DateDropdown from '../components/Calendar/DateDropdown';
+import Calendar from '../components/Calendar/Calendar';
 import ListItem from '../components/ListItem/ListItem';
 import './Pages.css';
 
 export default function SleepPage() {
   const [stateDate, setStateDate] = useState(new Date());
   const navUpdater = useNavUpdate();
-  const contextDate = useDate();
   
   const formattedDateFilterDate = `${stateDate.getMonth() + 1}/${stateDate.getDate()}/${stateDate.getFullYear()}`;
   const filteredList = sleepSchedule.filter(item => (item.date === formattedDateFilterDate));
@@ -25,7 +23,7 @@ export default function SleepPage() {
   return (
     <section className="page tracker-container">
       <div className="date-picker">
-      <DateDropdown lifter={dateLifter} inputDate={stateDate} showClearFilter={true} />
+      <Calendar lifter={dateLifter} inputDate={stateDate} showClearFilter={true} />
       </div>
       {filteredList.length > 0 ? (
         filteredList.map(item => (
