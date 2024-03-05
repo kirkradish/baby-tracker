@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import { NavLink } from 'react-router-dom'
 import { GlobalStateContext } from '../store/GlobalState.jsx';
 import { useNavUpdate } from '../store/NavContext.jsx';
-import DateDropdown from '../components/Calendar/DateDropdown';
+import Calendar from '../components/Calendar/Calendar';
 import ListItem from '../components/ListItem/ListItem';
 import './Pages.css';
 
@@ -19,6 +19,7 @@ export default function BottleFeedingsPage() {
   }, []);
 
   const dateLifter = (d) => {
+    console.log(`d: ${d}`);
     setStateDate(d);
   }
 
@@ -33,7 +34,7 @@ export default function BottleFeedingsPage() {
         </NavLink>
       </div>
       <div className="date-picker">
-        <DateDropdown lifter={dateLifter} inputDate={stateDate} showClearFilter={true} />
+        <Calendar lifter={dateLifter} inputDate={stateDate} showClearFilter={true} />
       </div>
       {filteredList.length > 0 ? (
         filteredList.map(item => (

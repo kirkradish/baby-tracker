@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { useDate, useDateUpdate } from '../../store/DateContext';
 import DatePicker from "react-datepicker";
 import PropTypes from 'prop-types';
+import { dateSlashFormatter } from '../../assets/commonFns';
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -9,26 +9,34 @@ import "react-datepicker/dist/react-datepicker.css";
 // import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 // https://www.npmjs.com/package/react-datepicker?activeTab=readme
 
-export default function Calendar({ lifter, inputDate }) {
+export default function Calendar({ lifter, inputDate, showClearFilter }) {
   const [stateDate, setStateDate] = useState(new Date(inputDate) || new Date());
-
-  const dateUpdater = useDateUpdate();
-  const contextDate = useDate();
-  const propDate = inputDate.length > 1 ? new Date(inputDate) : undefined;
-  const theDate = propDate || contextDate;
+  const currentDate = new Date();
+  const formattedDates = {};
+  formattedDates.current = dateSlashFormatter(currentDate);
+  formattedDates.userInput = dateSlashFormatter(inputDate);
 
   function handleChange(date) {
+    formattedDates.userInput = date;
     lifter(date);
     setStateDate(date);
-    // dateUpdater(date);
+  }
+  function handleFilterChange() {
+    lifter(new Date(formattedDates.current));
+    setStateDate(new Date(formattedDates.current));
   }
 
   return (
-    <DatePicker
-      // selected={theDate}
-      selected={stateDate}
-      onChange={(date) => handleChange(date)}
-    />
+    <div className="date-dropdown">
+      <p className="date-dropdown-title">Select a date</p>
+      <DatePicker
+        selected={stateDate}
+        onChange={(date) => handleChange(date)}
+      />
+      {(formattedDates.current !== formattedDates.userInput) && showClearFilter && (
+        <button className="clear-calendar-filter" onClick={handleFilterChange}>Back to today</button>
+      )}
+    </div>
   );
 }
 
@@ -37,10 +45,12 @@ Calendar.propTypes = {
   inputDate: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.string
-  ])
+  ]),
+  showClearFilter: PropTypes.bool
 };
 
 Calendar.defaultProps = {
   lifter: undefined,
-  inputDate: ''
+  inputDate: '',
+  showClearFilter: false
 };
