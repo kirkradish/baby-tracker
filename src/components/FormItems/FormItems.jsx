@@ -17,7 +17,7 @@ Form.propTypes = {
 export function Input({
   id,
   labelText,
-  inputType,
+  type,
   placeholderText,
   additionalClasses,
   value,
@@ -37,7 +37,7 @@ export function Input({
       <label htmlFor={id}>{labelText}</label>
       <input
         id={id}
-        type={inputType}
+        type={type}
         placeholder={placeholderText}
         value={inputValue}
         onChange={handleChange}
@@ -50,7 +50,7 @@ export function Input({
 Input.propTypes = {
   id: PropTypes.string.isRequired,
   labelText: PropTypes.string.isRequired,
-  inputType: PropTypes.string,
+  type: PropTypes.string,
   placeholderText: PropTypes.string,
   additionalClasses: PropTypes.string,
   value: PropTypes.string,
@@ -59,7 +59,7 @@ Input.propTypes = {
   errorText:PropTypes.string,
 };
 Input.defaultProps = {
-  inputType: 'text',
+  type: 'text',
   placeholderText: ' ',
   additionalClasses: '',
   value: '',

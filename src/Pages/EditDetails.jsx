@@ -71,10 +71,10 @@ export default function EditDetails() {
   
   function noteAssembly(e) {
     e.preventDefault();
-    const noteDate = liftedInputContent.date ? dateSlashFormatter(liftedInputContent.date) : dateSlashFormatter(inputDate);
+    const noteDate = liftedInputContent.date ? dateSlashFormatter(liftedInputContent.date) : dateSlashFormatter(new Date(inputDate));
     const updateType = id ? 'UPDATE_ITEM' : 'ADD_ITEM';
-    let headerText = liftedInputContent.input || curItem.header.split(" ").splice(0, 1).toString();
-    headerText = (pageGroup.page === 'bottles') ? `${headerText} ${pageGroup.measurement}` : headerText;
+    let headerText = liftedInputContent.input || curItem.header;
+    headerText = (pageGroup.page === 'bottles') ? `${headerText.split(" ").splice(0, 1).toString()} ${pageGroup.measurement}` : headerText;
     const bodyText = liftedInputContent.textarea || curItem.body;
     const noteTime = liftedInputContent.time || getCurrentTime();
     if (headerText) {
@@ -117,6 +117,7 @@ export default function EditDetails() {
           <Input
             id={pageGroup.utils.inputLabel.toLowerCase()}
             labelText={pageGroup.utils.inputLabel}
+            type={pageGroup.utils.inputType}
             value={configureHeader(curItem.header) || ''}
             lifter={inputLifter}
             validity={isHeaderValid}
@@ -132,7 +133,7 @@ export default function EditDetails() {
             <Input
               id="time"
               labelText="time"
-              inputType="time"
+              type="time"
               value={inputTime || getCurrentTime()}
               lifter={timeLifter}
               validity={true}
