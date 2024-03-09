@@ -2,9 +2,9 @@ import { useEffect, useContext, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { GlobalStateContext } from '../store/GlobalState.jsx';
 import { useNavUpdate } from '../store/NavContext.jsx';
-import { useDate, useDateUpdate } from '../store/DateContext';
+import { useDateUpdate } from '../store/DateContext';
 import { Form, Input, Textarea } from '../components/FormItems/FormItems';
-import { grabParentFromUrl, selectPageTypeData, dateSlashFormatter } from '../assets/commonFns';
+import { grabParentFromUrl, selectPageTypeData } from '../assets/commonFns';
 import Calendar from '../components/Calendar/Calendar';
 import MeasurementToggle from '../components/MeasurementToggle/MeasurementToggle.jsx';
 import '../components/FormItems/FormItems.css';
@@ -12,7 +12,6 @@ import '../components/FormItems/FormItems.css';
 export default function EditDetails() {
   const navUpdater = useNavUpdate();
   const navigate = useNavigate();
-  const contextDate = useDate();
   const dateUpdater = useDateUpdate();
   const { notes, notesUpdates, bottles, bottleUpdates } = useContext(GlobalStateContext);
   const [ isHeaderValid, setIsHeaderValid ] = useState(true);
@@ -35,11 +34,12 @@ export default function EditDetails() {
       break;
   }
 
-  const curObjItem = id ? pageGroup.objTypeContext.filter(note => note.id === id) : '';
-  const curItem = curObjItem[0] || curObjItem;
+  const curItemArray = id ? pageGroup.objTypeContext.filter(note => note.id === id) : '';
+  const curItem = curItemArray[0] || '';
   const liftedInputContent = {};
-  const inputDate = curItem.date || contextDate;
-  const inputTime = curItem.time || undefined;
+  const inputDate = curItem ? new Date(curItem.date) : new Date();
+  const twoDigitHour = inputDate.getHours() < 10 ? `0${inputDate.getHours()}` : inputDate.getHours();
+  const inputTime = `${twoDigitHour}:${inputDate.getMinutes()}`;
 
   useEffect(() => {
     navUpdater(false);
@@ -62,23 +62,20 @@ export default function EditDetails() {
     liftedInputContent.textarea = inputValue;
   }
 
-  const getCurrentTime = () => {
-    const curDate = new Date();
-    const curHour = curDate.getHours();
-    const curMin = curDate.getMinutes();
-    return `${curHour}:${curMin}`;
-  }
-  
   function noteAssembly(e) {
     e.preventDefault();
-    const noteDate = liftedInputContent.date ? dateSlashFormatter(liftedInputContent.date) : dateSlashFormatter(new Date(inputDate));
+    const noteDate = liftedInputContent.date ? new Date(liftedInputContent.date) : inputDate;
+    if (liftedInputContent.time) {
+      const userInputTime = [liftedInputContent.time.split(":")[0], liftedInputContent.time.split(":")[1]]
+      noteDate.setHours(userInputTime[0], userInputTime[1]);
+    }
+    
     const updateType = id ? 'UPDATE_ITEM' : 'ADD_ITEM';
     let headerText = liftedInputContent.input || curItem.header;
     headerText = (pageGroup.page === 'bottles') ? `${headerText.split(" ").splice(0, 1).toString()} ${pageGroup.measurement}` : headerText;
     const bodyText = liftedInputContent.textarea || curItem.body;
-    const noteTime = liftedInputContent.time || getCurrentTime();
     if (headerText) {
-      const assebmledNote = {id, headerText, noteDate, noteTime, bodyText, updateType};
+      const assebmledNote = {id, headerText, noteDate, bodyText, updateType};
       pageGroup.updaterContext(assebmledNote);
       id ? navigate(`../detail/${id}`) : navigate(-1);
     } else {
@@ -134,7 +131,7 @@ export default function EditDetails() {
               id="time"
               labelText="time"
               type="time"
-              value={inputTime || getCurrentTime()}
+              value={inputTime}
               lifter={timeLifter}
               validity={true}
             />

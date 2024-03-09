@@ -3,7 +3,7 @@ import { useNavUpdate } from '../store/NavContext.jsx';
 import { NavLink } from 'react-router-dom'
 import { GlobalStateContext } from '../store/GlobalState.jsx';
 import ListItem from '../components/ListItem/ListItem';
-import { dateSorter } from '../assets/commonFns.js';
+import { dateSorter, dateSlashFormatter } from '../assets/commonFns.js';
 import './Pages.css';
 
 export default function NotesPage() {
@@ -12,7 +12,7 @@ export default function NotesPage() {
   dateSorter(notes);
 
   // useCallback() ARE BE BETTER SUITED
-  // rather than functions in useEffect
+  // rather than functions in useEffect?
   useEffect(() => {
     navUpdater(true);
   }, []);
@@ -34,7 +34,7 @@ export default function NotesPage() {
             id={item.id}
             path="detail"
             header={item.header}
-            aside={item.date}
+            aside={dateSlashFormatter(new Date(item.date))}
           />
         ))}
       </div>

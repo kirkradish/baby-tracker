@@ -2,7 +2,7 @@ import { useEffect, useRef, useContext } from 'react';
 import { NavLink } from 'react-router-dom'
 import { GlobalStateContext } from '../store/GlobalState.jsx';
 import { useNavUpdate } from '../store/NavContext.jsx';
-import { grabParentFromUrl } from '../assets/commonFns.js';
+import { grabParentFromUrl, dateSlashFormatter, displayFormattedTime } from '../assets/commonFns.js';
 import { useParams, useNavigate } from 'react-router-dom';
 import DeleteModal from '../components/DeleteModal/DeleteModal.jsx';
 import { pureeFeedinds } from '../assets/data/pureeFeedings.js';
@@ -82,10 +82,10 @@ export default function DetailsPage() {
         <article key={idObj.id} className="detail-content">
           <header>
             <h2>{idObj.header}</h2>
-            <aside>{idObj.date}</aside>
+            <aside>{dateSlashFormatter(new Date(idObj.date))}</aside>
           </header>
           <p>
-            {grabParentFromUrl() !== 'notes' && <span style={{display: 'block'}}>{idObj.time}</span>}
+            {grabParentFromUrl() !== 'notes' && <span style={{display: 'block'}}>{displayFormattedTime(new Date(idObj.date))}</span>}
             {idObj.body}
           </p>
         </article>
