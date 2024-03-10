@@ -21,7 +21,6 @@ export default function EditDetails() {
 
   pageGroup.page = grabParentFromUrl();
   pageGroup.utils = selectPageTypeData(pageGroup.page);
-  pageGroup.measurement = allMeasurements[0];
   
   switch (pageGroup.page) {
     case 'notes':
@@ -73,10 +72,11 @@ export default function EditDetails() {
     
     const updateType = id ? 'UPDATE_ITEM' : 'ADD_ITEM';
     let headerText = liftedInputContent.input || curItem.header;
-    headerText = (pageGroup.page === 'bottles') ? `${headerText.split(" ").splice(0, 1).toString()} ${pageGroup.measurement}` : headerText;
     const bodyText = liftedInputContent.textarea || curItem.body;
+    const measurementInputType = pageGroup.measurement || curItem.measurementType;
+
     if (headerText) {
-      const assebmledNote = {id, headerText, noteDate, bodyText, updateType};
+      const assebmledNote = {id, headerText, measurementInputType, noteDate, bodyText, updateType};
       pageGroup.updaterContext(assebmledNote);
       id ? navigate(`../detail/${id}`) : navigate(-1);
     } else {
@@ -90,13 +90,6 @@ export default function EditDetails() {
 
   const measurementLifter = (str) => {
     pageGroup.measurement = str;
-  }
-
-  const configureHeader = (header) => {
-    header = (pageGroup.page === 'bottles' && id) ?
-      header.split(" ").splice(0, 1).toString() :
-      header;
-    return header;
   }
 
   return (
@@ -116,13 +109,16 @@ export default function EditDetails() {
             id={pageGroup.utils.inputLabel.toLowerCase()}
             labelText={pageGroup.utils.inputLabel}
             type={pageGroup.utils.inputType}
-            value={configureHeader(curItem.header) || ''}
+            value={curItem.header || ''}
             lifter={inputLifter}
             validity={isHeaderValid}
-            errorText="Header text is required"
           />
           {pageGroup.page === 'bottles' && (
-            <MeasurementToggle items={allMeasurements} lifter={measurementLifter} />
+            <MeasurementToggle
+              items={allMeasurements}
+              lifter={measurementLifter}
+              curMeasurement={curItem.measurementType}
+            />
           )}
         </div>
         <div className="flex-group">

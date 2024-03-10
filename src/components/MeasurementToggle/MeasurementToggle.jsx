@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './MeasurementToggle.css';
 
-export default function MeasurementToggle({ items, lifter }) {
-  const [itemOn, setItemOn] = useState(items[0]);
+export default function MeasurementToggle({ items, lifter, curMeasurement }) {
+  const [itemOn, setItemOn] = useState(curMeasurement);
 
   useEffect(() => {
-    lifter(items[0]);
+    lifter(curMeasurement);
   }, []);
 
   const handleClick = (item) => {
@@ -35,5 +35,10 @@ export default function MeasurementToggle({ items, lifter }) {
 
 MeasurementToggle.propTypes = {
   items: PropTypes.array.isRequired,
+  curMeasurement: PropTypes.string,
   lifter: PropTypes.func.isRequired
 }
+
+MeasurementToggle.defaultProps = {
+  curMeasurement: 'oz'
+};

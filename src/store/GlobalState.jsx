@@ -20,6 +20,7 @@ function crudReducer(state, action) {
       updatedGroup.unshift({
         id: randomFourDigitId().toString(),
         header: action.payload.headerText,
+        measurementType: action.payload.measurementInputType,
         date: action.payload.noteDate,
         time: action.payload.noteTime,
         body: action.payload.bodyText
@@ -31,6 +32,7 @@ function crudReducer(state, action) {
     if (action.payload.headerText.length > 0) {
       const curNoteIndex = updatedGroup.findIndex(x => x.id === action.payload.id);
       updatedGroup[curNoteIndex].header = action.payload.headerText;
+      updatedGroup[curNoteIndex].measurementType = action.payload.measurementInputType;
       updatedGroup[curNoteIndex].date = action.payload.noteDate;
       updatedGroup[curNoteIndex].time = action.payload.noteTime;
       updatedGroup[curNoteIndex].body = action.payload.bodyText;

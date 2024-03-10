@@ -81,7 +81,7 @@ export default function DetailsPage() {
 
         <article key={idObj.id} className="detail-content">
           <header>
-            <h2>{idObj.header}</h2>
+            <h2>{`${idObj.header} ${idObj.measurementType}`}</h2>
             <aside>{dateSlashFormatter(new Date(idObj.date))}</aside>
           </header>
           <p>

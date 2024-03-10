@@ -42,7 +42,7 @@ export default function BottleFeedingsPage() {
             key={item.id}
             id={item.id}
             path="detail"
-            header={item.header}
+            header={`${item.header} ${item.measurementType}`}
             aside={displayFormattedTime(new Date(item.date))}
           />
         ))
