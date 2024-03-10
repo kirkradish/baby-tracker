@@ -39,7 +39,8 @@ export default function EditDetails() {
   const liftedInputContent = {};
   const inputDate = curItem ? new Date(curItem.date) : new Date();
   const twoDigitHour = inputDate.getHours() < 10 ? `0${inputDate.getHours()}` : inputDate.getHours();
-  const inputTime = `${twoDigitHour}:${inputDate.getMinutes()}`;
+  const twoDigitMinutes = inputDate.getMinutes() < 10 ? `0${inputDate.getMinutes()}` : inputDate.getMinutes();
+  const inputTime = `${twoDigitHour}:${twoDigitMinutes}`;
 
   useEffect(() => {
     navUpdater(false);
