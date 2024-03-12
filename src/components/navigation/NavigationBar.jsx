@@ -2,7 +2,7 @@ import { useNav } from '../../store/NavContext.jsx';
 import NavItem from './NavItem';
 import NotesIcon from '../../assets/icons/NotesIcon';
 import BottleIcon from '../../assets/icons/BottleIcon';
-import PureeIcon from '../../assets/icons/PureeIcon.jsx';
+import SolidFoodIcon from '../../assets/icons/SolidFoods.jsx';
 import CribIcon from '../../assets/icons/CribIcon';
 import './navigation.css';
 
@@ -22,9 +22,9 @@ export default function NavigationBar() {
         endPath="bottles"
       />
       <NavItem
-        Icon={PureeIcon}
-        text="Pur&eacute;e"
-        endPath="puree-foods"
+        Icon={SolidFoodIcon}
+        text="Solid Foods"
+        endPath="solid-foods"
       />
       <NavItem
         Icon={CribIcon}

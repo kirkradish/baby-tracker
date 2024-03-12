@@ -46,8 +46,8 @@
   font-weight: 700;
 }
 .minimal-nav-bar .nav-item-container.active p {
-  color: #ffffff;
-  background: #5C41DD;
+  color: #5C41DD;
+  background: #FADDF5;
   padding: 2px .5em;
   margin-top: .5em;
   border-radius: .5em;

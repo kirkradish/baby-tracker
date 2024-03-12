@@ -5,14 +5,17 @@ import { useNavUpdate } from '../store/NavContext.jsx';
 import { grabParentFromUrl, dateSlashFormatter, displayFormattedTime } from '../assets/commonFns.js';
 import { useParams, useNavigate } from 'react-router-dom';
 import DeleteModal from '../components/DeleteModal/DeleteModal.jsx';
-import { pureeFeedinds } from '../assets/data/pureeFeedings.js';
 import { sleepSchedule } from '../assets/data/sleepSchedule';
 import './DetailsPages.css';
 
 export default function DetailsPage() {
   const navUpdater = useNavUpdate();
   const dialog = useRef();
-  const { notes, notesUpdates, bottles, bottleUpdates } = useContext(GlobalStateContext);
+  const {
+    notes, notesUpdates,
+    bottles, bottleUpdates,
+    solidFoods, solidFoodsUpdates,
+  } = useContext(GlobalStateContext);
 
   useEffect(() => {
     navUpdater(false);
@@ -34,8 +37,8 @@ export default function DetailsPage() {
       detailGroup.detailParent = bottles;
       detailGroup.updater = bottleUpdates;
       break;
-    case 'puree-foods' :
-      detailGroup.detailParent = pureeFeedinds;
+    case 'solid-foods' :
+      detailGroup.detailParent = solidFoods;
       break;
     case 'sleep-schedule' :
       detailGroup.detailParent = sleepSchedule;

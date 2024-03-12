@@ -2,13 +2,16 @@ import { createContext, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import { notes } from '../assets/data/notes';
 import { bottles } from '../assets/data/bottleFeedings';
+import { solidFoodsFeedings } from '../assets/data/solidFoodsFeedings';
 import { dateSorter, randomFourDigitId } from '../assets/commonFns';
 
 export const GlobalStateContext = createContext({
   notes,
   notesUpdates: () => {},
   bottles,
-  bottleUpdates: () => {}
+  bottleUpdates: () => {},
+  solidFoodsFeedings,
+  solidFoodsUpdates: () => {}
 });
 
 function crudReducer(state, action) {
@@ -49,6 +52,7 @@ function crudReducer(state, action) {
 export default function GlobalStateProvider({ children }) {
   const [notesState, notesDispatch] = useReducer(crudReducer, notes);
   const [bottleState, bottleDispatch] = useReducer(crudReducer, bottles);
+  const [solidFoodsState, solidFoodsDispatch] = useReducer(crudReducer, solidFoodsFeedings);
 
   function handleNotesUpdates(newNote) {
     notesDispatch({
@@ -64,11 +68,20 @@ export default function GlobalStateProvider({ children }) {
     })
   }
 
+  function handleSolidFoodsUpdates(newSolidFood) {
+    solidFoodsDispatch({
+      type: newSolidFood.updateType,
+      payload: newSolidFood
+    })
+  }
+
   const gscValues = {
     notes: notesState,
     notesUpdates: handleNotesUpdates,
     bottles: bottleState,
-    bottleUpdates: handleBottleUpdates
+    bottleUpdates: handleBottleUpdates,
+    solidFoods: solidFoodsState,
+    solidFoodsUpdates: handleSolidFoodsUpdates
   };
 
   return (

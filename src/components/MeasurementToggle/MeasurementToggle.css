@@ -1,17 +1,22 @@
 .measurement-toggle {
   display: flex;
   gap: 1em;
-  margin-bottom: 2em
+  color: #5C41DD;
+  margin-bottom: 2em;
 }
 .measurement-toggle button {
-  background-color: #F8F6F9;
+  color: #5C41DD;
+  background-color: rgba(255, 255, 255, .8);
   border-radius: 2em;
   width: 3em;
   height: 3em;
 }
-.measurement-toggle button.active {
-  font-size: 1em;
-  font-weight: 600;
+.measurement-toggle button:hover {
   color: #ffffff;
   background-color: #5C41DD;
+}
+.measurement-toggle button.active {
+  font-weight: 600;
+  color: #5C41DD;
+  background-color: #FADDF5;
 }

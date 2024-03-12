@@ -1,4 +1,4 @@
-const SvgPureeIcon = (props) => (
+const SvgSolidFoodsIcon = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     data-name="Layer 1"
@@ -10,4 +10,4 @@ const SvgPureeIcon = (props) => (
     />
   </svg>
 );
-export default SvgPureeIcon;
+export default SvgSolidFoodsIcon;

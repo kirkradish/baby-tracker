@@ -1,4 +1,8 @@
-import { NOTES_DATA, BOTTLES_DATA } from "./data/pageutils";
+import {
+  NOTES_DATA,
+  BOTTLES_DATA,
+  SOLIDS_DATA
+} from "./data/pageutils";
 
 export const grabParentFromUrl = () => window.location.href.split('/')[3];
 
@@ -25,11 +29,14 @@ export const displayFormattedTime = (date) => {
 export const selectPageTypeData = (page) => {
   let pageData = {};
   switch(page) {
-    case 'notes':
-      pageData = NOTES_DATA;
+    case 'bottles':
+      pageData = BOTTLES_DATA;
+      break;
+    case 'solid-foods':
+      pageData = SOLIDS_DATA;
       break;
     default:
-      pageData = BOTTLES_DATA;
+      pageData = NOTES_DATA;
       break;
   }
   return pageData;

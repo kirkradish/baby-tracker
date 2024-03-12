@@ -13,11 +13,15 @@ export default function EditDetails() {
   const navUpdater = useNavUpdate();
   const navigate = useNavigate();
   const dateUpdater = useDateUpdate();
-  const { notes, notesUpdates, bottles, bottleUpdates } = useContext(GlobalStateContext);
+  const {
+    notes, notesUpdates,
+    bottles, bottleUpdates,
+    solidFoods, solidFoodsUpdates
+  } = useContext(GlobalStateContext);
   const [ isHeaderValid, setIsHeaderValid ] = useState(true);
   const { id } = useParams();
   const pageGroup = {};
-  const allMeasurements = ['oz', 'mL'];
+  const allMeasurements = ['oz', 'mL']; // make dynamic
 
   pageGroup.page = grabParentFromUrl();
   pageGroup.utils = selectPageTypeData(pageGroup.page);
@@ -30,6 +34,11 @@ export default function EditDetails() {
     case 'bottles':
       pageGroup.objTypeContext = bottles;
       pageGroup.updaterContext = bottleUpdates;
+      // add measurements here too?
+      break;
+    case 'solid-foods':
+      pageGroup.objTypeContext = solidFoods;
+      pageGroup.updaterContext = solidFoodsUpdates;
       break;
   }
 
@@ -101,7 +110,9 @@ export default function EditDetails() {
         >
           <span>close</span>
         </button>
-        <h2 className="page-edit__header">{pageGroup.utils.addPageTitle}</h2>
+        <h2 className="page-edit__header">
+          {id ? `Edit ${pageGroup.utils.pageTitle}` : `Add ${pageGroup.utils.pageTitle}`}
+        </h2>
       </header>
       <Form onSubmit={noteAssembly}>
         <div className="flex-group">
