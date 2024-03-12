@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import { NavLink } from 'react-router-dom'
 import { GlobalStateContext } from '../store/GlobalState.jsx';
 import { useNavUpdate } from '../store/NavContext.jsx';
-import { displayFormattedTime, cutDateObjToDateOnly } from '../assets/commonFns.js';
+import { displayFormattedTime, cutDateObjToDateOnly, dateSorter } from '../assets/commonFns.js';
 import Calendar from '../components/Calendar/Calendar';
 import ListItem from '../components/ListItem/ListItem';
 import './Pages.css';
@@ -37,7 +37,7 @@ export default function BottleFeedingsPage() {
         <Calendar lifter={dateLifter} inputDate={stateDate} showClearFilter={true} />
       </div>
       {filteredList.length > 0 ? (
-        filteredList.map(item => (
+        dateSorter(filteredList).map(item => (
           <ListItem
             key={item.id}
             id={item.id}

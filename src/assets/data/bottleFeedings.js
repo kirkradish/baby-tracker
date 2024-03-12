@@ -3,14 +3,14 @@ export const bottles = [
     id: "2450",
     header: "4",
     measurementType: "oz",
-    date: "Sat Mar 09 2024 07:15:39 GMT-0500 (Eastern Standard Time)",
+    date: "Sat Mar 11 2024 07:15:39 GMT-0500 (Eastern Standard Time)",
     body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text."
   },
   {
     id: "6651",
     header: "3",
     measurementType: "oz",
-    date: "Thu Mar 07 2024 07:15:39 GMT-0500 (Eastern Standard Time)",
+    date: "Thu Mar 11 2024 15:15:39 GMT-0500 (Eastern Standard Time)",
     body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text."
   },
   {
