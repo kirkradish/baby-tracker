@@ -5,8 +5,9 @@ import { NavLink, Routes, Route } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import NavigationBar from './components/Navigation/NavigationBar';
 import HomePage from './Pages/HomePage';
-import NotesPage from './Pages/NotesPage';
-import DetailsPage from './Pages/DetailsPages';
+import NotesPage from './Pages/Notes/NotesPage';
+import NotesUpdate from './Pages/Notes/NotesUpdate';
+import DetailsPage from './Pages/Details/DetailsPages.jsx';
 import BottleFeedingsPage from './Pages/BottleFeedingsPage';
 import SolidFoodsPage from './Pages/SolidFoodsPage';
 import SleepPage from './Pages/SleepPage';
@@ -31,8 +32,8 @@ function App() {
               <Route path='/' element={<HomePage />} />
               <Route path='notes'>
                 <Route index={true} element={<NotesPage />}></Route>
-                <Route path='editor/' element={<EditDetails />} />
-                <Route path='editor/:id' element={<EditDetails />} />
+                <Route path='editor/' element={<NotesUpdate />} />
+                <Route path='editor/:id' element={<NotesUpdate />} />
                 <Route path='detail/:id' element={<DetailsPage />} />
               </Route>
               <Route path='bottles'>

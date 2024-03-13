@@ -1,10 +1,10 @@
 import { useEffect, useContext } from 'react';
-import { useNavUpdate } from '../store/NavContext.jsx';
+import { useNavUpdate } from '../../store/NavContext.jsx';
 import { NavLink } from 'react-router-dom'
-import { GlobalStateContext } from '../store/GlobalState.jsx';
-import ListItem from '../components/ListItem/ListItem';
-import { dateSorter, dateSlashFormatter } from '../assets/commonFns.js';
-import './Pages.css';
+import { GlobalStateContext } from '../../store/GlobalState.jsx';
+import ListItem from '../../components/ListItem/ListItem.jsx';
+import { dateSorter, dateSlashFormatter } from '../../assets/commonFns.js';
+import '../Pages.css';
 
 export default function NotesPage() {
   const navUpdater = useNavUpdate();

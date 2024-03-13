@@ -1,11 +1,11 @@
 import { useEffect, useRef, useContext } from 'react';
 import { NavLink } from 'react-router-dom'
-import { GlobalStateContext } from '../store/GlobalState.jsx';
-import { useNavUpdate } from '../store/NavContext.jsx';
-import { grabParentFromUrl, dateSlashFormatter, displayFormattedTime } from '../assets/commonFns.js';
+import { GlobalStateContext } from '../../store/GlobalState.jsx';
+import { useNavUpdate } from '../../store/NavContext.jsx';
+import { grabParentFromUrl, dateSlashFormatter, displayFormattedTime } from '../../assets/commonFns.js';
 import { useParams, useNavigate } from 'react-router-dom';
-import DeleteModal from '../components/DeleteModal/DeleteModal.jsx';
-import { sleepSchedule } from '../assets/data/sleepSchedule';
+import DeleteModal from '../../components/DeleteModal/DeleteModal.jsx';
+import { sleepSchedule } from '../../assets/data/sleepSchedule.js';
 import './DetailsPages.css';
 
 export default function DetailsPage() {
@@ -84,7 +84,10 @@ export default function DetailsPage() {
 
         <article key={idObj.id} className="detail-content">
           <header>
-            <h2>{`${idObj.header} ${idObj.measurementType}`}</h2>
+            <h2>
+              {`${idObj.header}`}
+              {grabParentFromUrl() !== 'notes' && ` ${idObj.measurementType}` }
+            </h2>
             <aside>{dateSlashFormatter(new Date(idObj.date))}</aside>
           </header>
           <p>
