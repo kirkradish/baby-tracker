@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { notes } from '../assets/data/notes';
 import { bottles } from '../assets/data/bottleFeedings';
 import { solidFoodsFeedings } from '../assets/data/solidFoodsFeedings';
-import { dateSorter, randomFourDigitId } from '../assets/commonFns';
+import { randomFourDigitId } from '../assets/commonFns';
 
 export const GlobalStateContext = createContext({
   notes,
@@ -16,30 +16,28 @@ export const GlobalStateContext = createContext({
 
 function crudReducer(state, action) {
   const updatedGroup = [...state];
-  dateSorter(updatedGroup);
 
   if (action.type === 'ADD_ITEM') {
-    if (action.payload.headerText.length > 0) {
-      updatedGroup.unshift({
-        id: randomFourDigitId().toString(),
-        header: action.payload.headerText,
-        measurementType: action.payload.measurementInputType,
-        date: action.payload.noteDate,
-        time: action.payload.noteTime,
-        body: action.payload.bodyText
-      });
+    const newItem = {
+      id: randomFourDigitId().toString(),
+      header: action.payload.headerText,
+      date: action.payload.itemDate,
+      body: action.payload.bodyText
     }
+    if (action.payload.measurementInputType) {
+      newItem.measurementType = action.payload.measurementInputType;
+    }
+    updatedGroup.unshift(newItem);
   }
 
   if (action.type === 'UPDATE_ITEM') {
-    if (action.payload.headerText.length > 0) {
-      const curNoteIndex = updatedGroup.findIndex(x => x.id === action.payload.id);
-      updatedGroup[curNoteIndex].header = action.payload.headerText;
+    const curNoteIndex = updatedGroup.findIndex(x => x.id === action.payload.id);
+    updatedGroup[curNoteIndex].header = action.payload.headerText;
+    if (action.payload.measurementInputType) {
       updatedGroup[curNoteIndex].measurementType = action.payload.measurementInputType;
-      updatedGroup[curNoteIndex].date = action.payload.noteDate;
-      updatedGroup[curNoteIndex].time = action.payload.noteTime;
-      updatedGroup[curNoteIndex].body = action.payload.bodyText;
     }
+    updatedGroup[curNoteIndex].date = action.payload.itemDate;
+    updatedGroup[curNoteIndex].body = action.payload.bodyText;
   }
 
   if (action.type === 'DELETE_ITEM') {

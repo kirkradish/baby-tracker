@@ -1,11 +1,11 @@
 import { useState, useEffect, useContext } from 'react';
+import { useNavUpdate } from '../../store/NavContext.jsx';
 import { NavLink } from 'react-router-dom';
-import { GlobalStateContext } from '../store/GlobalState.jsx';
-import { useNavUpdate } from '../store/NavContext.jsx';
-import { displayFormattedTime, cutDateObjToDateOnly, dateSorter } from '../assets/commonFns.js';
-import Calendar from '../components/Calendar/Calendar';
-import ListItem from '../components/ListItem/ListItem';
-import './Pages.css';
+import { GlobalStateContext } from '../../store/GlobalState.jsx';
+import { displayFormattedTime, cutDateObjToDateOnly, dateSorter } from '../../assets/commonFns.js';
+import Calendar from '../../components/Calendar/Calendar.jsx';
+import ListItem from '../../components/ListItem/ListItem.jsx';
+import '../Pages.css';
 
 export default function BottleFeedingsPage() {
   const [stateDate, setStateDate] = useState(new Date());
@@ -14,7 +14,6 @@ export default function BottleFeedingsPage() {
 
   const shortenedDate = cutDateObjToDateOnly(stateDate);
   const filteredList = bottles.filter(item => item.date.toString().includes(shortenedDate));
-
   useEffect(() => {
     navUpdater(true);
   }, []);
