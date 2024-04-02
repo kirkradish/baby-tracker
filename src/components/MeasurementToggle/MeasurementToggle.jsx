@@ -4,6 +4,7 @@ import './MeasurementToggle.css';
 
 export default function MeasurementToggle({ items, lifter, curMeasurement }) {
   const [itemOn, setItemOn] = useState(curMeasurement);
+  console.log(curMeasurement);
 
   useEffect(() => {
     lifter(curMeasurement);
@@ -40,5 +41,5 @@ MeasurementToggle.propTypes = {
 }
 
 MeasurementToggle.defaultProps = {
-  curMeasurement: 'oz'
+  curMeasurement: ''
 };

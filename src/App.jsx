@@ -10,9 +10,9 @@ import NotesUpdate from './Pages/Notes/NotesUpdate';
 import DetailsPage from './Pages/Details/DetailsPages.jsx';
 import BottleFeedingsPage from './Pages/BottleFeedings/BottleFeedingsPage';
 import BottleFeedingsUpdate from './Pages/BottleFeedings/BottleFeedingsUpdate';
-import SolidFoodsPage from './Pages/SolidFoodsPage';
+import SolidFoodsPage from './Pages/SolidFoods/SolidFoodsPage.jsx';
+import SolidFoodsUpdate from './Pages/SolidFoods/SolidFoodsUpdate.jsx';
 import SleepPage from './Pages/SleepPage';
-import EditDetails from './Pages/EditDetails.jsx';
 import './App.css';
 
 function App() {
@@ -45,8 +45,8 @@ function App() {
               </Route>
               <Route path='solid-foods'>
                 <Route index={true} element={<SolidFoodsPage />}></Route>
-                <Route path='add-solid-food/' element={<EditDetails />} />
-                <Route path='editor/:id' element={<EditDetails />} />
+                <Route path='add-solid-food/' element={<SolidFoodsUpdate />} />
+                <Route path='editor/:id' element={<SolidFoodsUpdate />} />
                 <Route path='detail/:id' element={<DetailsPage />} />
               </Route>
               <Route path='sleep-schedule'>

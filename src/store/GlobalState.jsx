@@ -11,7 +11,7 @@ export const GlobalStateContext = createContext({
   bottles,
   bottleUpdates: () => {},
   solidFoodsFeedings,
-  solidFoodsUpdates: () => {}
+  solidsUpdates: () => {}
 });
 
 function crudReducer(state, action) {
@@ -66,7 +66,7 @@ export default function GlobalStateProvider({ children }) {
     })
   }
 
-  function handleSolidFoodsUpdates(newSolidFood) {
+  function handleSolidsUpdates(newSolidFood) {
     solidFoodsDispatch({
       type: newSolidFood.updateType,
       payload: newSolidFood
@@ -79,7 +79,7 @@ export default function GlobalStateProvider({ children }) {
     bottles: bottleState,
     bottleUpdates: handleBottleUpdates,
     solidFoods: solidFoodsState,
-    solidFoodsUpdates: handleSolidFoodsUpdates
+    solidsUpdates: handleSolidsUpdates
   };
 
   return (

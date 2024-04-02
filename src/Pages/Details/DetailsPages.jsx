@@ -14,7 +14,7 @@ export default function DetailsPage() {
   const {
     notes, notesUpdates,
     bottles, bottleUpdates,
-    solidFoods, solidFoodsUpdates,
+    solidFoods, solidsUpdates,
   } = useContext(GlobalStateContext);
 
   useEffect(() => {
@@ -39,6 +39,7 @@ export default function DetailsPage() {
       break;
     case 'solid-foods' :
       detailGroup.detailParent = solidFoods;
+      detailGroup.updater = solidsUpdates;
       break;
     case 'sleep-schedule' :
       detailGroup.detailParent = sleepSchedule;

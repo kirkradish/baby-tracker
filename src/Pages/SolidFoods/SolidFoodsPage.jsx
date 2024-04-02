@@ -1,11 +1,11 @@
 import { useState, useEffect, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useNavUpdate } from '../store/NavContext.jsx';
-import { GlobalStateContext } from '../store/GlobalState.jsx';
-import { displayFormattedTime, cutDateObjToDateOnly, dateSorter } from '../assets/commonFns.js';
-import Calendar from '../components/Calendar/Calendar.jsx';
-import ListItem from '../components/ListItem/ListItem.jsx';
-import './Pages.css';
+import { useNavUpdate } from '../../store/NavContext.jsx';
+import { GlobalStateContext } from '../../store/GlobalState.jsx';
+import { displayFormattedTime, cutDateObjToDateOnly, dateSorter } from '../../assets/commonFns.js';
+import Calendar from '../../components/Calendar/Calendar.jsx';
+import ListItem from '../../components/ListItem/ListItem.jsx';
+import '../Pages.css';
 
 export default function SolidFoodsPage() {
   const [stateDate, setStateDate] = useState(new Date());
