@@ -24,6 +24,12 @@ function crudReducer(state, action) {
       date: action.payload.itemDate,
       body: action.payload.bodyText
     }
+    if (action.payload.solidFoodFormat) {
+      console.log('titties');
+      console.log(action.payload.purreedAmount);
+      newItem.solidFoodFormat = action.payload.solidFoodFormat;
+      newItem.amount = action.payload.purreedAmount;
+    }
     if (action.payload.measurementInputType) {
       newItem.measurementType = action.payload.measurementInputType;
     }

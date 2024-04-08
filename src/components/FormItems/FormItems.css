@@ -4,9 +4,12 @@
   height: 100%;
 }
 
+.form-block {
+  margin: 1em 0 1em 0;
+}
+
 .input-group {
   position: relative;
-  margin-bottom: 2em;
   width: 100%;
 }
 
@@ -35,9 +38,6 @@
   font-size: .8em;
   color: rgba(92, 65, 221, 1);
   padding: 0 3px;
-}
-.input-group__body {
-  flex-grow: 1;
 }
 .input-group textarea {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -89,4 +89,42 @@ button.form__cancel:hover {
   font-size: .8em;
   font-style: italic;
   color: #FF3434;
+}
+
+.radio-button-container {
+  font-size: 1em;
+  font-weight: 500;
+  line-height: 1.1;
+  display: grid;
+  grid-template-columns: 1em auto;
+  gap: 0.5em;
+  color: var(--purple);
+}
+input[type="radio"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid var(--purple);
+  border-radius: 50%;
+  transform: translateY(-0.075em);
+  display: grid;
+  place-content: center;
+}
+input[type="radio"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--purple);
+  background-color: CanvasText;
+}
+input[type="radio"]:checked::before {
+  transform: scale(1);
 }

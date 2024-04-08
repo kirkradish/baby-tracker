@@ -1,30 +1,42 @@
 export const solidFoodsFeedings = [
   {
     id: "6345",
-    header: "2.5",
+    objectType: "solidFood",
+    header: "Apple and oatmeal",
+    amount: "3",
     measurementType: "tblsp",
-    date: "Mon Apr 01 2024 07:15:39 GMT-0500 (Eastern Standard Time)",
-    body: "Sweet Potato"
+    solidFoodFormat: "pureed",
+    date: "Sun Apr 07 2024 07:15:39 GMT-0500 (Eastern Standard Time)",
+    body: ""
   },
   {
     id: "5345",
-    header: "1",
-    measurementType: "oz",
-    date: "Tue Mar 12 2024 15:15:39 GMT-0500 (Eastern Standard Time)",
-    body: "Apple"
+    objectType: "solidFood",
+    header: "Sweet Potato",
+    amount: "3",
+    measurementType: "tblsp",
+    solidFoodFormat: "pureed",
+    date: "Thu Apr 04 2024 15:15:39 GMT-0500 (Eastern Standard Time)",
+    body: "She loves sweet potato!"
   },
   {
     id: "4567",
-    header: "2.5",
+    objectType: "solidFood",
+    header: "Pears",
+    amount: "3",
     measurementType: "tblsp",
+    solidFoodFormat: "pureed",
     date: "Tue Mar 05 2024 14:15:39 GMT-0500 (Eastern Standard Time)",
-    body: "Apple + Pear"
+    body: ""
   },
   {
     id: "3456",
-    header: "2",
+    objectType: "solidFood",
+    header: "Sweet Potato",
+    amount: "3",
     measurementType: "tblsp",
+    solidFoodFormat: "pureed",
     date: "Tue Mar 05 2024 20:22:39 GMT-0500 (Eastern Standard Time)",
-    body: "Peas"
+    body: ""
   }
 ]

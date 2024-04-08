@@ -82,7 +82,7 @@ export const Textarea = ({
   }
 
   return (
-    <div className={`input-group input-group__body ${additionalClasses}`}>
+    <div className={`input-group ${additionalClasses}`}>
       <label htmlFor={id}>{labelText}</label>
       <textarea
         id={id}
@@ -142,4 +142,52 @@ ActionButtons.propTypes = {
 };
 ActionButtons.defaultProps = {
   primaryClickFn: undefined
+};
+
+export function Checkbox({ labelText }) {
+  return (
+    <span className="checkbox-container">
+      <input
+        type="checkbox"
+        id={labelText}
+        name={labelText}
+        // value={labelText}
+      />
+      <label htmlFor={labelText}>{labelText}</label>
+    </span>
+  )
+}
+
+Checkbox.propTypes = {
+  labelText: PropTypes.string.isRequired
+};
+
+export function RadioButtons({ defaultRadio, buttons, lifter }) {
+  const [selectedRadio, setSelectedRadio] = useState(defaultRadio || '');
+
+  const handleRadioSelect = (e) => {
+    setSelectedRadio(e.target.value);
+    lifter(e.target.value);
+  };
+
+  return (
+    buttons.map((radio => (
+      <div className="radio-button-container" key={radio.id}>
+        <input
+          type="radio"
+          id={radio.id}
+          name={radio.name}
+          value={radio.id}
+          checked={selectedRadio === radio.id}
+          onChange={handleRadioSelect}
+        />
+        <label htmlFor={radio.id}>{radio.label}</label>
+      </div>
+    )))
+  )
+}
+
+RadioButtons.propTypes = {
+  solidFoodFormat: PropTypes.string,
+  buttons: PropTypes.array.isRequired
 };

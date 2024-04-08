@@ -82,12 +82,15 @@ export default function NotesUpdate() {
         <div className="flex-group">
           <Calendar lifter={dateLifter} inputDate={new Date(inputDate)} />
         </div>
-        <Textarea
-          id="body"
-          labelText="body"
-          value={curItem.body || ''}
-          lifter={textareaLifter}
-        />
+        <div className="flex-group form-block grow">
+          <Textarea
+            id="body"
+            additionalClasses="grow"
+            labelText="body"
+            value={curItem.body || ''}
+            lifter={textareaLifter}
+          />
+        </div>
         <input
           type="submit"
           className="submit-form"

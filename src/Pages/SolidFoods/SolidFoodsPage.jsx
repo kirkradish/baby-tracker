@@ -33,7 +33,7 @@ export default function SolidFoodsPage() {
           </button>
         </NavLink>
       </div>
-      <div className="date-picker">
+      <div className="date-picker form-block">
         <Calendar lifter={dateLifter} inputDate={stateDate} showClearFilter={true} />
       </div>
       {filteredList.length > 0 ? (

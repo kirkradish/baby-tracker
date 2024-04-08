@@ -87,7 +87,7 @@ export default function DetailsPage() {
           <header>
             <h2>
               {`${idObj.header}`}
-              {grabParentFromUrl() !== 'notes' && ` ${idObj.measurementType}` }
+              {grabParentFromUrl() === 'bottles' && ` ${idObj.measurementType}` }
             </h2>
             <aside>{dateSlashFormatter(new Date(idObj.date))}</aside>
           </header>
